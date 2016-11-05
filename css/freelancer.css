@@ -9,10 +9,21 @@ body {
 }
 p {
   font-size: 20px;
+  text-align: justify;
 }
 p.small {
   font-size: 16px;
 }
+
+p, li {
+  font-size: 20px;
+  text-align: left;
+}
+p, ol {
+  font-size: 20px;
+  text-align: left;
+}
+
 a,
 a:hover,
 a:focus,
@@ -43,7 +54,7 @@ hr.star-primary {
 }
 hr.star-light:after,
 hr.star-primary:after {
-  content: "\f005";
+  content: "\f111";
   font-family: FontAwesome;
   display: inline-block;
   position: relative;

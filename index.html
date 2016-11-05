@@ -445,7 +445,7 @@ year = {2015},}
     </footer>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <div class="scroll-top page-scroll hidden-sm hidden-xs visible-lg visible-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
@@ -488,9 +488,9 @@ year = {2015},}
                             <p>
                                 The (dis)agreement intensity labels were defined according
                                  to the Likert ordinal scale [Likert 1932] in the range:
-                                <li>2  : Strong Disagreement</li>
-                                <li>-1  : Disagreement</li>
-                                <li>0   : Neutral level</li>
+                                <li>2 : Strong Disagreement</li>
+                                <li>-1 : Disagreement</li>
+                                <li>0 : Neutral level</li>
                                 <li>+1 : Agreement</li>
                                 <li>+2 : Strong Agreement</li>
                             </p>
@@ -499,7 +499,7 @@ year = {2015},}
                                 The final distribution of the intensity levels is shown in the lower figure.
                             </p>
                             <img src="img/portfolio_data/ibug1.png" class="img-responsive img-centered" alt="">
-                            <img src="img/portfolio_data/ibug2.png" class="img-responsive img-centered" alt="">
+                            <img src="img/portfolio_data/ibug2.png" class="img-responsive img-centered" alt="" >
                             <p>
                                 After appropriate feature pre-processing (alignment and normalisation), down-sampling and segmentation, 329 sequences were obtained, on average 80 frames long. 5 fold subject-independent cross validation of the compared models.
                             </p>
@@ -591,15 +591,33 @@ year = {2015},}
                             </p>
                             <img src="img/portfolio_data/laas1.png" class="img-responsive img-centered" alt="">
                             <p>
-                                <li>
-                                    Inputs from sensors gathered – Velocity, torque, IMU...
-                                </li>
-                                <li>
-                                    Labeling by expert annotator – 3 classes (normal, rough and fault locomotion)
-                                </li>
-                                <li>
-                                    Machine Learning modelling methods explored – Conditional Random Fields (CRF), Hidden Markov Models (HMM), Naive Bayes…
-                                </li>
+                                <ul>
+                                    <li>Inputs from sensors gathered </li>
+                                    <ul> 
+                                      <li>Velocity, torque, IMU...</li>
+                                    </ul>
+                                </ul>
+
+                                <ul>
+                                    <li>
+                                      Labeling by expert annotator 
+                                    </li>
+                                    <ul> 
+                                      <li>3 classes (normal, rough and fault locomotion)
+                                      </li>
+                                    </ul>
+                                </ul>
+
+                                <ul>
+                                    <li>
+                                      Machine Learning modelling methods explored 
+                                    </li>
+                                    <ul> 
+                                      <li>Conditional Random Fields (CRF), Hidden Markov Models (HMM), Naive Bayes…
+                                      </li>
+                                    </ul>
+                                </ul>
+                                
                             </p>
                             <p>
                                 Due to the limited amount of time, the analysis of results was not completed. However, based on the obtained feature-label distributions the problem seems to be complex, but interesting for further examination.
@@ -607,11 +625,13 @@ year = {2015},}
                             <p>
                                 Label distribution in the space of front - back wheel velocity and torque difference:
                             </p>
-                            <img src="img/portfolio_data/laas2.png" class="img-responsive img-centered" alt="">
+                            <img src="img/portfolio_data/MANAfront-back_vel.png" class="img-responsive img-centered" alt="">
+                            <img src="img/portfolio_data/MANAfront-back_torque.png" class="img-responsive img-centered" alt="">
                             <p>
                                 Label distribution in the space of left – right wheel velocity and torque difference:
                             </p>
-                            <img src="img/portfolio_data/laas3.png" class="img-responsive img-centered" alt="">
+                            <img src="img/portfolio_data/MANAleft-right_vel.png" class="img-responsive img-centered" alt="">
+                            <img src="img/portfolio_data/MANAleft-right_torque.png" class="img-responsive img-centered" alt="">
 
                             <ul class="list-inline item-details">
                                 <li>Institution:
@@ -664,36 +684,48 @@ year = {2015},}
                                 <br>
 
                                 <p>
-                                    Problem to be solved
-                                    <li>
-                                        To deal with obstacles which are not considered during global path planning due to the dead area of external sensors and occlusions.
-                                    </li>
-                                    <li>
-                                        Mapping the explored environment.
-                                    </li>
-                                </p>
-
-                                <p>
-                                    Objective
-                                    <li>
-                                        To propose an efficient re-planning method considering sub-goals of the global path (their direction) and the spatial terrain properties (the state of the ground, the height and the distance from the untraversable obstacles and also the terrain roughness), in order to deal with the above problems.
-                                    </li>
+                                  <ul>
+                                    <li>Problem to be solved</li>
+                                    <ul>
+                                      <li>
+                                          To deal with obstacles which are not considered during global path planning due to the dead area of external sensors and occlusions.
+                                      </li>
+                                      <li>
+                                          Mapping the explored environment.
+                                      </li>
+                                    </ul>
+                                
+                                    <li>Objective</li>
+                                    <ul>
+                                      <li>
+                                          To propose an efficient re-planning method considering sub-goals of the global path (their direction) and the spatial terrain properties (the state of the ground, the height and the distance from the untraversable obstacles and also the terrain roughness), in order to deal with the above problems.
+                                      </li>
+                                    </ul>
+                                  </ul>
                                 </p>
                             <img src="img/portfolio_data/keio1.png" class="img-responsive img-centered" alt="">
                             <p>
-                                Further I show:
-                                Proposed Method
-                                Global map generation from local views and position information.
-                                Fuzzy Controller based navigation based on local views.
-
-                                Verification Tests on the “Cuatro” rover
-                                Weight: 35kg
-                                4 wheel drive
-                                4 wheel steering
-                                SwissRanger™ SR4000  TOF camera
-                                Rocker suspension + independent shock absorbers
+                                Proposed Method:
+                                <ul>
+                                  <li>
+                                    Global map generation from local views and position information.
+                                  </li>
+                                  <li>
+                                    Fuzzy Controller based navigation based on local views.
+                                  </li>
+                                </ul>
+                              </p>
+                              <p>
+                                Verification Tests on the “Cuatro” rover:
+                                <ul>
+                                  <li>Weight: 35kg</li>
+                                  <li>4 wheel drive</li>
+                                  <li>4 wheel steering</li>
+                                  <li>SwissRanger™ SR4000  TOF camera</li>
+                                  <li>Rocker suspension + independent shock absorbers</li>
+                                </ul>
                             </p>
-
+                            <br>
                             <p>
                                 PROPOSED METHOD OVERVIEW
                                 <br>
@@ -807,29 +839,39 @@ year = {2015},}
                             <p>
                                 COMPONENTS
                                 <br>
-
                                 The components used in the AUV which needed to be organised:
-                                -Power supply 
-                                    Batteries (4 Lithium-Polymer (LiPo), 6 cell, batteries)
-                                    Emergency stop 
-                                    Power board 
-                                -Devices 
-                                    Sensors  (Doppler Velocity Log (DVL), Inertial Measurement Unit (IMU), hydrophones, top camera , webcam)
-                                    Actuators (stepper motor and its controller, thruster motors and their drivers)
-                                    Computation (PC104 and peripherals, Arduino)
-                                -Connectors 
-                                    Waterproof connectors 
-                                    Molex: motors & pressure sensor 
-                                    Battery molex + special 
-                                    Camera + hydrophones
+                                <br>
+                                <ul>
+                                  <li>Power supply </li>
+                                    <ul>
+                                      <li>Batteries (4 Lithium-Polymer (LiPo), 6 cell, batteries)</li>
+                                      <li>Emergency stop </li>
+                                      <li>Power board </li>
+                                    </ul>
+                                  <li>Devices </li>
+                                    <ul>
+                                      <li>Sensors  (Doppler Velocity Log (DVL), Inertial Measurement Unit (IMU), hydrophones, top camera , webcam)</li>
+                                      <li>Actuators (stepper motor and its controller, thruster motors and their drivers)</li>
+                                      <li>Computation (PC104 and peripherals, Arduino)</li>
+                                    </ul>
+                                  <li>Connectors </li>
+                                    <ul>
+                                      <li>Waterproof connectors </li>
+                                      <li>Molex: motors & pressure sensor </li>
+                                      <li>Battery molex + special </li>
+                                      <li>Camera + hydrophones</li>
+                                    </ul>
+                                  </ul>
                             </p>
                             <p>
                                 Moreover, additional auxiliary structural components needed to be made to support all the devices. Particular care was taken when components were placed so they do not interfere and affect each others performance.
                             </p>
                             <p>
                                 INSIDE THE TUBE
-
-                                Component placement inside the tube and their actual fitting:
+                                <br>
+                                <li>
+                                  Component placement inside the tube and their actual fitting:
+                                </li>
                             </p>
                             <img src="img/portfolio_data/nurc2.png" class="img-responsive img-centered" alt="">
                             <p>
@@ -959,10 +1001,12 @@ year = {2015},}
                             </p>
                             <p>
                                 My responsibilities were:
-                                <li>Work organisation and logistics</li>
-                                <li>Electronics (power, sensors, main microcontroller and wiring communication)</li>
-                                <li>Programming the main strategy algorithm</li>
-                                <li>Obtaining sponsorships and parts</li>
+                                <ul>
+                                  <li>Work organisation and logistics</li>
+                                  <li>Electronics (power, sensors, main microcontroller and wiring communication)</li>
+                                  <li>Programming the main strategy algorithm</li>
+                                  <li>Obtaining sponsorships and parts</li>
+                                </ul>
                             </p>
                             
                             <p>
@@ -973,19 +1017,25 @@ year = {2015},}
                             <p>
                                 PLAYGROUND
                                 <br>
-                                -2 players
-                                -Figures
-                                King
-                                Queen
-                                Pawn
-                                Blue & red fields
-                                <br>
+                                <ul>
+                                  <li>2 players</li>
+                                  <li>Figures</li>
+                                  <ul>
+                                    <li>King</li>
+                                    <li>Queen</li>
+                                    <li>Pawn</li>
+                                  </ul>
+                                  <li>Blue & red fields</li>
+                            </p>
+                            <p>
                                 MAIN CHALLENGES
                                 <br>
-                                Recognising chess elements
-                                Avoiding fixed obstacles (table edges)
-                                Avoiding the opponent robot
-                                Line tracking
+                                <ul>
+                                  <li>Recognising chess elements</li>
+                                  <li>Avoiding fixed obstacles (table edges)</li>
+                                  <li>Avoiding the opponent robot</li>
+                                  <li>Line tracking</li>
+                                </ul>
                             </p>
                             <img src="img/portfolio_data/eurobot1.png" class="img-responsive img-centered" alt="">
 
@@ -1002,12 +1052,10 @@ year = {2015},}
                             <p>
                                 SENSORS
                                 <br>
-                                SHARP Infra-red distance sensors
-                                Used both for obstacle and opponent avoidance
+                                SHARP Infra-red distance sensors - used both for obstacle and opponent avoidance
                                 <img src="img/portfolio_data/eurobot4.png" class="img-responsive img-centered" alt="">
                                 <br>
-                                RGB colour sensor (HDJD-S822-QR999)
-                                Used for line following
+                                RGB colour sensor (HDJD-S822-QR999) -used for line following
                                 <img src="img/portfolio_data/eurobot5.png" class="img-responsive img-centered" alt="">
                             </p>
                             <p>
@@ -1020,7 +1068,8 @@ year = {2015},}
                                 <br>
 
                                 The main concept behind the line following, is using the left and right RGB sensor couples to detect the edges. This can be exploited to compensate the encoder’s error accumulation due to slippage. The approach can be used for precise turning and correcting the motion by aligning the wheels on the edges.
-
+                            </p>
+                            <p>
                                 Precise turning through alignment shown in 6 steps:
                             </p>
                             <img src="img/portfolio_data/eurobot7.png" class="img-responsive img-centered" alt="">
