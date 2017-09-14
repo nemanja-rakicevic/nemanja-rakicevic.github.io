@@ -1,0 +1,528 @@
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Nemanja Rakicevic's web presentation">
+    <meta name="keywords" content="nemanja, rakicevic, robotics, machine learning" />
+    <meta name="author" content="Nemanja Rakicevic">
+    <link rel="icon" href="img/hal9000.ico">
+
+    <title>Nemanja</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="./vendor/bootstrap/css/bootstrap.css" rel="stylesheet"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="./css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Satisfy:300,400,700" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+
+<body id="page-top" class="index">
+
+
+<h2>
+  What can you put in?
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now add a few bits of code, plots, math, etc, to show which kinds of content can be put in and work out of the box.  These are mostly bits copied from our <a href="https://github.com/ipython/ipython/tree/master/docs/examples/notebooks">example notebooks</a> so the actual content doesn't matter, I'm just illustrating the <em>kind</em> of content that works.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Let&#39;s initialize pylab so we can plot later</span>
+<span class="o">%</span><span class="k">pylab</span> <span class="n">inline</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>
+Welcome to pylab, a matplotlib-based Python environment [backend: module://IPython.zmq.pylab.backend_inline].
+For more information, type &apos;help(pylab)&apos;.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With pylab loaded, the usual matplotlib operations work</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">r&#39;$\sin(x)$&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">r&#39;$\cos(x)$&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">r&#39;Two familiar functions&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [2]:</div>
+<div class="output_subarea output_pyout">
+<pre>&lt;matplotlib.legend.Legend at 0x3128610&gt;</pre>
+</div>
+</div>
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The notebook, thanks to MathJax, has great LaTeX support, so that you can type inline math $(1,\gamma,\ldots, \infty)$ as well as displayed equations:</p>
+<p>$$
+e^{i \pi}+1=0
+$$</p>
+<p>but by loading the <a href="http://sympy.org">sympy</a> extension, it's easy showcase math <em>output</em> from Python computations, where we don't type the math expressions in text, and instead the results of code execution are displayed in mathematical format:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">sympyprinting</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sym</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s">&quot;x y z&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From simple algebraic expressions</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">pi</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [4]:</div>
+<div class="output_subarea output_pyout">
+$$\frac{3}{2} \pi + \frac{e^{\mathbf{\imath} x}}{x^{2} + y}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">eq</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">eq</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [5]:</div>
+<div class="output_subarea output_pyout">
+$$\left(x + 1\right) \left(x + y\right)^{2}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">expand</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [6]:</div>
+<div class="output_subarea output_pyout">
+$$x^{3} + 2 x^{2} y + x^{2} + x y^{2} + 2 x y + y^{2}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To calculus</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">diff</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [7]:</div>
+<div class="output_subarea output_pyout">
+$$- 4 \frac{x \operatorname{sin}\left(x^{2}\right) \operatorname{cos}\left(x^{2}\right)}{x + 1} - \frac{\operatorname{cos}^{2}\left(x^{2}\right)}{\left(x + 1\right)^{2}}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For more examples of how to use sympy in the notebook, you can see <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/master/docs/examples/notebooks/sympy.ipynb">our example sympy notebook</a> or go to the <a href="http://sympy.org">sympy website</a> for much more documentation.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  You can easily include formatted text and code with markdown
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can <em>italicize</em>, <strong>boldface</strong></p>
+<ul>
+<li>build</li>
+<li>lists</li>
+</ul>
+<p>and embed code meant for illustration instead of execution in Python:</p>
+<pre><code>def f(x):
+    """a docstring"""
+    return x**2
+</code></pre>
+<p>or other languages:</p>
+<pre><code>if (i=0; i&lt;n; i++) {
+  printf("hello %d\n", i);
+  x += 4;
+}
+</code></pre>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And since the notebook can store displayed images in the file itself, you can show images which will be embedded in your post:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;fig/img_4926.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [8]:</div>
+<div class="output_subarea output_pyout">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can embed YouTube videos using the IPython object, this is my recent talk at SciPy'12 about IPython:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s">&#39;iwVvqwLDsJo&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [9]:</div>
+<div class="output_subarea output_pyout">
+
+            <iframe
+                width="400"
+                height="300"
+                src="http://www.youtube.com/embed/iwVvqwLDsJo"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Including code examples from other languages
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using our various script cell magics, it's easy to include code in a variety of other languages</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">ruby</span>
+<span class="n">puts</span> <span class="s">&quot;Hello from Ruby #{RUBY_VERSION}&quot;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>Hello from Ruby 1.8.7
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="n">echo</span> <span class="s">&quot;hello from $BASH&quot;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>hello from /bin/bash
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And tools like the Octave and R magics let you interface with entire computational systems directly from the notebook; this is the Octave magic for which <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/d835d46dcc50043971b4a9915398bad1b5d63648/docs/examples/notebooks/octavemagic_extension.ipynb">our example notebook contains more details</a>:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">octavemagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">octave</span> <span class="o">-</span><span class="n">s</span> <span class="mi">500</span><span class="p">,</span><span class="mi">500</span>
+
+<span class="c"># butterworth filter, order 2, cutoff pi/2 radians</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.292893218813452</span>  <span class="mf">0.585786437626905</span>  <span class="mf">0.292893218813452</span><span class="p">];</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="mi">0</span>  <span class="mf">0.171572875253810</span><span class="p">];</span>
+<span class="n">freqz</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/3607712653c66d63e0d7f13f073bde8c0f209ba8/docs/examples/notebooks/rmagic_extension.ipynb">rmagic extension</a> does a similar job, letting you call R directly from the notebook, passing variables back and forth between Python and R.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Start by creating some data in Python</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Which can then be manipulated in R, with results available back in Python (in <code>XYcoef</code>):</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">R</span> <span class="o">-</span><span class="n">i</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">-</span><span class="n">o</span> <span class="n">XYcoef</span>
+<span class="n">XYlm</span> <span class="o">=</span> <span class="n">lm</span><span class="p">(</span><span class="n">Y</span><span class="o">~</span><span class="n">X</span><span class="p">)</span>
+<span class="n">XYcoef</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">XYlm</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">summary</span><span class="p">(</span><span class="n">XYlm</span><span class="p">))</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">XYlm</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+<pre>
+Call:
+lm(formula = Y ~ X)
+
+Residuals:
+   1    2    3    4    5 
+-0.2  0.9 -1.0  0.1  0.2 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   3.2000     0.6164   5.191   0.0139 *
+X             0.9000     0.2517   3.576   0.0374 *
+---
+Signif. codes:  0 &#8216;***&#8217; 0.001 &#8216;**&#8217; 0.01 &#8216;*&#8217; 0.05 &#8216;.&#8217; 0.1 &#8216; &#8217; 1 
+
+Residual standard error: 0.7958 on 3 degrees of freedom
+Multiple R-squared:  0.81, Adjusted R-squared: 0.7467 
+F-statistic: 12.79 on 1 and 3 DF,  p-value: 0.03739 
+
+</pre>
+</div>
+</div>
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">XYcoef</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [17]:</div>
+<div class="output_subarea output_pyout">
+<pre>[ 3.2  0.9]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And finally, in the same spirit, the <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/3607712653c66d63e0d7f13f073bde8c0f209ba8/docs/examples/notebooks/cython_extension.ipynb">cython magic extension</a> lets you call Cython code directly from the notebook:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">cythonmagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">cython</span> <span class="o">-</span><span class="n">lm</span>
+<span class="kn">from</span> <span class="nn">libc.math</span><span class="err"> </span><span class="nn">cimport</span><span class="err"> </span><span class="nn">sin</span>
+<span class="k">print</span> <span class="s">&#39;sin(1)=&#39;</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>sin(1)= 0.841470984808
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Keep in mind, this is still experimental code!
+</h2>
+
+
+
+</body>
+
+</html>

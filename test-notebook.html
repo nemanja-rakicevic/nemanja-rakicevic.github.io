@@ -1,0 +1,2768 @@
+
+<!DOCTYPE html>
+<html class='v2' dir='ltr'>
+<head>
+<link href='https://www.blogger.com/static/v1/widgets/521441841-css_bundle_v2.css' rel='stylesheet' type='text/css'/>
+<meta content='width=1100' name='viewport'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='blogger' name='generator'/>
+<link href='http://blog.fperez.org/favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html' rel='canonical'/>
+<link rel="alternate" type="application/atom+xml" title="Fernando Perez - Atom" href="http://blog.fperez.org/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="Fernando Perez - RSS" href="http://blog.fperez.org/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="Fernando Perez - Atom" href="https://www.blogger.com/feeds/462991820843482154/posts/default" />
+
+<link rel="alternate" type="application/atom+xml" title="Fernando Perez - Atom" href="http://blog.fperez.org/feeds/8675842404944082544/comments/default" />
+<!--[if IE]><script type="text/javascript" src="https://www.blogger.com/static/v1/jsbin/35781802-ieretrofit.js"></script>
+<![endif]-->
+<link href='https://plus.google.com/105051551851350439748' rel='publisher'/>
+<meta content='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html' property='og:url'/>
+<meta content='Blogging with the IPython notebook' property='og:title'/>
+<meta content='  Update (May 2014):  Please note that these instructions are outdated. while it is still possible (and in fact easier) to blog with the Not...' property='og:description'/>
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>Fernando Perez: Blogging with the IPython notebook</title>
+<style id='page-skin-1' type='text/css'><!--
+/*-----------------------------------------------
+Blogger Template Style
+Name:     Picture Window
+Designer: Blogger
+URL:      www.blogger.com
+----------------------------------------------- */
+
+/* Content
+----------------------------------------------- */
+body {
+font: normal normal 15px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+color: #000000;
+background: #fafafa url(//themes.googleusercontent.com/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo) repeat-x fixed top center;
+}
+html body .region-inner {
+min-width: 0;
+max-width: 100%;
+width: auto;
+}
+.content-outer {
+font-size: 90%;
+}
+a:link {
+text-decoration:none;
+color: #336699;
+}
+a:visited {
+text-decoration:none;
+color: #667f99;
+}
+a:hover {
+text-decoration:underline;
+color: #ffaa00;
+}
+.content-outer {
+background: transparent url(//www.blogblog.com/1kt/transparent/black50.png) repeat scroll top left;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+-moz-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+box-shadow: 0 0 3px rgba(0, 0, 0, .15);
+margin: 0 auto;
+}
+.content-inner {
+padding: 10px;
+}
+/* Header
+----------------------------------------------- */
+.header-outer {
+background: transparent none repeat-x scroll top left;
+_background-image: none;
+color: #ffffff;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.Header img, .Header #header-inner {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.header-inner .Header .titlewrapper,
+.header-inner .Header .descriptionwrapper {
+padding-left: 30px;
+padding-right: 30px;
+}
+.Header h1 {
+font: normal normal 48px Georgia, Utopia, 'Palatino Linotype', Palatino, serif;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.Header h1 a {
+color: #ffffff;
+}
+.Header .description {
+font-size: 130%;
+}
+/* Tabs
+----------------------------------------------- */
+.tabs-inner {
+margin: .5em 15px 1em;
+padding: 0;
+}
+.tabs-inner .section {
+margin: 0;
+}
+.tabs-inner .widget ul {
+padding: 0;
+background: #1c1c1c none repeat scroll bottom;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.tabs-inner .widget li {
+border: none;
+}
+.tabs-inner .widget li a {
+display: inline-block;
+padding: .5em 1em;
+margin-right: 0;
+color: #ff9900;
+font: normal normal 15px Georgia, Utopia, 'Palatino Linotype', Palatino, serif;
+-moz-border-radius: 0 0 0 0;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-goog-ms-border-radius: 0 0 0 0;
+border-radius: 0 0 0 0;
+background: transparent none no-repeat scroll top left;
+border-right: 1px solid #000000;
+}
+.tabs-inner .widget li:first-child a {
+padding-left: 1.25em;
+-moz-border-radius-topleft: 0;
+-moz-border-radius-bottomleft: 0;
+-webkit-border-top-left-radius: 0;
+-webkit-border-bottom-left-radius: 0;
+-goog-ms-border-top-left-radius: 0;
+-goog-ms-border-bottom-left-radius: 0;
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+}
+.tabs-inner .widget li.selected a,
+.tabs-inner .widget li a:hover {
+position: relative;
+z-index: 1;
+background: #dd7700 none repeat scroll bottom;
+color: #ffffff;
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+font: normal bold 16px Georgia, Utopia, 'Palatino Linotype', Palatino, serif;
+text-transform: none;
+color: #635241;
+margin: .5em 0;
+}
+/* Main
+----------------------------------------------- */
+.main-outer {
+background: transparent none repeat scroll top center;
+-moz-border-radius: 0 0 0 0;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-webkit-border-bottom-left-radius: 0;
+-webkit-border-bottom-right-radius: 0;
+-goog-ms-border-radius: 0 0 0 0;
+border-radius: 0 0 0 0;
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+}
+.main-inner {
+padding: 15px 20px 20px;
+}
+.main-inner .column-center-inner {
+padding: 0 0;
+}
+.main-inner .column-left-inner {
+padding-left: 0;
+}
+.main-inner .column-right-inner {
+padding-right: 0;
+}
+/* Posts
+----------------------------------------------- */
+h3.post-title {
+margin: 0;
+font: normal bold 24px Georgia, Utopia, 'Palatino Linotype', Palatino, serif;
+}
+.comments h4 {
+margin: 1em 0 0;
+font: normal bold 24px Georgia, Utopia, 'Palatino Linotype', Palatino, serif;
+}
+.date-header span {
+color: #cccccc;
+}
+.post-outer {
+background-color: #ffffff;
+border: solid 1px transparent;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+border-radius: 0;
+-goog-ms-border-radius: 0;
+padding: 15px 20px;
+margin: 0 -20px 20px;
+}
+.post-body {
+line-height: 1.4;
+font-size: 110%;
+position: relative;
+}
+.post-header {
+margin: 0 0 1.5em;
+color: #1c1c1c;
+line-height: 1.6;
+}
+.post-footer {
+margin: .5em 0 0;
+color: #1c1c1c;
+line-height: 1.6;
+}
+#blog-pager {
+font-size: 140%
+}
+#comments .comment-author {
+padding-top: 1.5em;
+border-top: dashed 1px #ccc;
+border-top: dashed 1px rgba(128, 128, 128, .5);
+background-position: 0 1.5em;
+}
+#comments .comment-author:first-child {
+padding-top: 0;
+border-top: none;
+}
+.avatar-image-container {
+margin: .2em 0 0;
+}
+/* Comments
+----------------------------------------------- */
+.comments .comments-content .icon.blog-author {
+background-repeat: no-repeat;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB9sLFwMeCjjhcOMAAAD+SURBVDjLtZSvTgNBEIe/WRRnm3U8RC1neQdsm1zSBIU9VVF1FkUguQQsD9ITmD7ECZIJSE4OZo9stoVjC/zc7ky+zH9hXwVwDpTAWWLrgS3QAe8AZgaAJI5zYAmc8r0G4AHYHQKVwII8PZrZFsBFkeRCABYiMh9BRUhnSkPTNCtVXYXURi1FpBDgArj8QU1eVXUzfnjv7yP7kwu1mYrkWlU33vs1QNu2qU8pwN0UpKoqokjWwCztrMuBhEhmh8bD5UDqur75asbcX0BGUB9/HAMB+r32hznJgXy2v0sGLBcyAJ1EK3LFcbo1s91JeLwAbwGYu7TP/3ZGfnXYPgAVNngtqatUNgAAAABJRU5ErkJggg==);
+}
+.comments .comments-content .loadmore a {
+border-top: 1px solid #ffaa00;
+border-bottom: 1px solid #ffaa00;
+}
+.comments .continue {
+border-top: 2px solid #ffaa00;
+}
+/* Widgets
+----------------------------------------------- */
+.widget ul, .widget #ArchiveList ul.flat {
+padding: 0;
+list-style: none;
+}
+.widget ul li, .widget #ArchiveList ul.flat li {
+border-top: dashed 1px #ccc;
+border-top: dashed 1px rgba(128, 128, 128, .5);
+}
+.widget ul li:first-child, .widget #ArchiveList ul.flat li:first-child {
+border-top: none;
+}
+.widget .post-body ul {
+list-style: disc;
+}
+.widget .post-body ul li {
+border: none;
+}
+/* Footer
+----------------------------------------------- */
+.footer-outer {
+color:#cccccc;
+background: transparent none repeat scroll top center;
+-moz-border-radius: 0 0 0 0;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-webkit-border-bottom-left-radius: 0;
+-webkit-border-bottom-right-radius: 0;
+-goog-ms-border-radius: 0 0 0 0;
+border-radius: 0 0 0 0;
+-moz-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+-goog-ms-box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+box-shadow: 0 0 0 rgba(0, 0, 0, .15);
+}
+.footer-inner {
+padding: 10px 20px 20px;
+}
+.footer-outer a {
+color: #ff9900;
+}
+.footer-outer a:visited {
+color: #dd7700;
+}
+.footer-outer a:hover {
+color: #ffaa00;
+}
+.footer-outer .widget h2 {
+color: #ffffff;
+}
+/* Mobile
+----------------------------------------------- */
+html body.mobile {
+height: auto;
+}
+html body.mobile {
+min-height: 480px;
+background-size: 100% auto;
+}
+.mobile .body-fauxcolumn-outer {
+background: transparent none repeat scroll top left;
+}
+html .mobile .mobile-date-outer, html .mobile .blog-pager {
+border-bottom: none;
+background: transparent none repeat scroll top center;
+margin-bottom: 10px;
+}
+.mobile .date-outer {
+background: transparent none repeat scroll top center;
+}
+.mobile .header-outer, .mobile .main-outer,
+.mobile .post-outer, .mobile .footer-outer {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+-goog-ms-border-radius: 0;
+border-radius: 0;
+}
+.mobile .content-outer,
+.mobile .main-outer,
+.mobile .post-outer {
+background: inherit;
+border: none;
+}
+.mobile .content-outer {
+font-size: 100%;
+}
+.mobile-link-button {
+background-color: #336699;
+}
+.mobile-link-button a:link, .mobile-link-button a:visited {
+color: #ffffff;
+}
+.mobile-index-contents {
+color: #000000;
+}
+.mobile .tabs-inner .PageList .widget-content {
+background: #dd7700 none repeat scroll bottom;
+color: #ffffff;
+}
+.mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
+border-left: 1px solid #000000;
+}
+<style type="text/css">
+/**
+* HTML5 &#10032; Boilerplate
+*
+* style.css contains a reset, font normalization and some base styles.
+*
+* Credit is left where credit is due.
+* Much inspiration was taken from these projects:
+* - yui.yahooapis.com/2.8.1/build/base/base.css
+* - camendesign.com/design/
+* - praegnanz.de/weblog/htmlcssjs-kickstart
+*/
+/**
+* html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+* v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+* html5doctor.com/html-5-reset-stylesheet/
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+table { border-collapse: collapse; border-spacing: 0; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+input, select { vertical-align: middle; }
+/**
+* Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+*/
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+/* Normalize monospace sizing:
+en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+em,i { font-style: italic; }
+b,strong { font-weight: bold; }
+</style>
+<style type="text/css">
+/* Flexible box model classes */
+/* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
+.hbox {
+display: -webkit-box;
+-webkit-box-orient: horizontal;
+-webkit-box-align: stretch;
+display: -moz-box;
+-moz-box-orient: horizontal;
+-moz-box-align: stretch;
+display: box;
+box-orient: horizontal;
+box-align: stretch;
+}
+.hbox > * {
+-webkit-box-flex: 0;
+-moz-box-flex: 0;
+box-flex: 0;
+}
+.vbox {
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-box-align: stretch;
+display: -moz-box;
+-moz-box-orient: vertical;
+-moz-box-align: stretch;
+display: box;
+box-orient: vertical;
+box-align: stretch;
+}
+.vbox > * {
+-webkit-box-flex: 0;
+-moz-box-flex: 0;
+box-flex: 0;
+}
+.reverse {
+-webkit-box-direction: reverse;
+-moz-box-direction: reverse;
+box-direction: reverse;
+}
+.box-flex0 {
+-webkit-box-flex: 0;
+-moz-box-flex: 0;
+box-flex: 0;
+}
+.box-flex1, .box-flex {
+-webkit-box-flex: 1;
+-moz-box-flex: 1;
+box-flex: 1;
+}
+.box-flex2 {
+-webkit-box-flex: 2;
+-moz-box-flex: 2;
+box-flex: 2;
+}
+.box-group1 {
+-webkit-box-flex-group: 1;
+-moz-box-flex-group: 1;
+box-flex-group: 1;
+}
+.box-group2 {
+-webkit-box-flex-group: 2;
+-moz-box-flex-group: 2;
+box-flex-group: 2;
+}
+.start {
+-webkit-box-pack: start;
+-moz-box-pack: start;
+box-pack: start;
+}
+.end {
+-webkit-box-pack: end;
+-moz-box-pack: end;
+box-pack: end;
+}
+.center {
+-webkit-box-pack: center;
+-moz-box-pack: center;
+box-pack: center;
+}
+</style>
+<style type="text/css">
+/**
+* Primary styles
+*
+* Author: IPython Development Team
+*/
+body {
+overflow: hidden;
+}
+span#save_widget {
+padding: 5px;
+margin: 0px 0px 0px 300px;
+display:inline-block;
+}
+span#notebook_name {
+height: 1em;
+line-height: 1em;
+padding: 3px;
+border: none;
+font-size: 146.5%;
+}
+.ui-menubar-item .ui-button .ui-button-text {
+padding: 0.4em 1.0em;
+font-size: 100%;
+}
+.ui-menu {
+-moz-box-shadow:    0px 6px 10px -1px #adadad;
+-webkit-box-shadow: 0px 6px 10px -1px #adadad;
+box-shadow:         0px 6px 10px -1px #adadad;
+}
+.ui-menu .ui-menu-item a {
+border: 1px solid transparent;
+padding: 2px 1.6em;
+}
+.ui-menu .ui-menu-item a.ui-state-focus {
+margin: 0;
+}
+.ui-menu hr {
+margin: 0.3em 0;
+}
+#menubar_container {
+position: relative;
+}
+#notification_area {
+position: absolute;
+right: 0px;
+top: 0px;
+height: 25px;
+padding: 3px 0px;
+padding-right: 3px;
+z-index: 10;
+}
+.notification_widget{
+float : right;
+right: 0px;
+top: 1px;
+height: 25px;
+padding: 3px 6px;
+z-index: 10;
+}
+#toolbar {
+padding: 3px 15px;
+}
+#cell_type {
+font-size: 85%;
+}
+div#main_app {
+width: 100%;
+position: relative;
+}
+span#quick_help_area {
+position: static;
+padding: 5px 0px;
+margin: 0px 0px 0px 0px;
+}
+.help_string {
+float: right;
+width: 170px;
+padding: 0px 5px;
+text-align: left;
+font-size: 85%;
+}
+.help_string_label {
+float: right;
+font-size: 85%;
+}
+div#notebook_panel {
+margin: 0px 0px 0px 0px;
+padding: 0px;
+}
+div#notebook {
+overflow-y: scroll;
+overflow-x: auto;
+width: 100%;
+/* This spaces the cell away from the edge of the notebook area */
+padding: 5px 5px 15px 5px;
+margin: 0px;
+background-color: white;
+}
+div#pager_splitter {
+height: 8px;
+}
+div#pager {
+padding: 15px;
+overflow: auto;
+display: none;
+}
+div.ui-widget-content {
+border: 1px solid #aaa;
+outline: none;
+}
+.cell {
+border: 1px solid transparent;
+}
+div.cell {
+width: 100%;
+padding: 5px 5px 5px 0px;
+/* This acts as a spacer between cells, that is outside the border */
+margin: 2px 0px 2px 0px;
+}
+div.code_cell {
+background-color: white;
+}
+/* any special styling for code cells that are currently running goes here */
+div.code_cell.running {
+}
+div.prompt {
+/* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+width: 11ex;
+/* This 0.4em is tuned to match the padding on the CodeMirror editor. */
+padding: 0.4em;
+margin: 0px;
+font-family: monospace;
+text-align:right;
+}
+div.input {
+page-break-inside: avoid;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+color: black;
+border: 1px solid #ddd;
+border-radius: 3px;
+background: #f7f7f7;
+}
+div.input_prompt {
+color: navy;
+border-top: 1px solid transparent;
+}
+div.output_wrapper {
+/* This is a spacer between the input and output of each cell */
+margin-top: 5px;
+margin-left: 5px;
+/* FF needs explicit width to stretch */
+width: 100%;
+/* this position must be relative to enable descendents to be absolute within it */
+position: relative;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+/* ideally, this would be max-height, but FF barfs all over that */
+height: 24em;
+/* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+width: 100%;
+overflow: auto;
+border-radius: 3px;
+box-shadow: inset 0 2px 8px rgba(0, 0, 0, .8);
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+margin-right: 5px;
+}
+div.out_prompt_overlay {
+height: 100%;
+padding: 0px;
+position: absolute;
+border-radius: 3px;
+}
+div.out_prompt_overlay:hover {
+/* use inner shadow to get border that is computed the same on WebKit/FF */
+box-shadow: inset 0 0 1px #000;
+background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+color: darkred;
+/* 5px right shift to account for margin in parent container */
+margin: 0 5px 0 -5px;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+padding: 0px;
+page-break-inside: avoid;
+}
+/* This class is for the output subarea inside the output_area and after
+the prompt div. */
+div.output_subarea {
+padding: 0.4em 0.4em 0.4em 0.4em;
+}
+/* The rest of the output_* classes are for special styling of the different
+output types */
+/* all text output has this class: */
+div.output_text {
+text-align: left;
+color: black;
+font-family: monospace;
+}
+/* stdout/stderr are 'text' as well as 'stream', but pyout/pyerr are *not* streams */
+div.output_stream {
+padding-top: 0.0em;
+padding-bottom: 0.0em;
+}
+div.output_stdout {
+}
+div.output_stderr {
+background: #fdd; /* very light red background for stderr */
+}
+div.output_latex {
+text-align: left;
+color: black;
+}
+div.output_html {
+}
+div.output_png {
+}
+div.output_jpeg {
+}
+div.text_cell {
+background-color: white;
+padding: 5px 5px 5px 5px;
+}
+div.text_cell_input {
+color: black;
+border: 1px solid #ddd;
+border-radius: 3px;
+background: #f7f7f7;
+}
+div.text_cell_render {
+font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+outline: none;
+resize: none;
+width:  inherit;
+border-style: none;
+padding: 5px;
+color: black;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+* monospace font with inconsistent normal/bold/italic height.  See
+* notebookmain.js.  Such fonts will have keywords vertically offset with
+* respect to the rest of the text.  The user should select a better font.
+* See: https://github.com/ipython/ipython/issues/1503
+*
+* .CodeMirror span {
+*      vertical-align: bottom;
+* }
+*/
+.CodeMirror {
+line-height: 1.231;  /* Changed from 1em to our global default */
+}
+.CodeMirror-scroll {
+height: auto;     /* Changed to auto to autogrow */
+/*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+/*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+overflow-y: hidden;
+overflow-x: auto; /* Changed from auto to remove scrollbar */
+}
+/* CSS font colors for translated ANSI colors. */
+.ansiblack {color: black;}
+.ansired {color: darkred;}
+.ansigreen {color: darkgreen;}
+.ansiyellow {color: brown;}
+.ansiblue {color: darkblue;}
+.ansipurple {color: darkviolet;}
+.ansicyan {color: steelblue;}
+.ansigrey {color: grey;}
+.ansibold {font-weight: bold;}
+.completions {
+position: absolute;
+z-index: 10;
+overflow: hidden;
+border: 1px solid grey;
+}
+.completions select {
+background: white;
+outline: none;
+border: none;
+padding: 0px;
+margin: 0px;
+overflow: auto;
+font-family: monospace;
+}
+option.context {
+background-color: #DEF7FF;
+}
+option.introspection {
+background-color: #EBF4EB;
+}
+/*fixed part of the completion*/
+.completions p b {
+font-weight:bold;
+}
+.completions p {
+background: #DDF;
+/*outline: none;
+padding: 0px;*/
+border-bottom: black solid 1px;
+padding: 1px;
+font-family: monospace;
+}
+pre.dialog {
+background-color: #f7f7f7;
+border: 1px solid #ddd;
+border-radius: 3px;
+padding: 0.4em;
+padding-left: 2em;
+}
+p.dialog {
+padding : 0.2em;
+}
+.shortcut_key {
+display: inline-block;
+width: 15ex;
+text-align: right;
+font-family: monospace;
+}
+.shortcut_descr {
+}
+/* Word-wrap output correctly.  This is the CSS3 spelling, though Firefox seems
+to not honor it correctly.  Webkit browsers (Chrome, rekonq, Safari) do.
+*/
+pre, code, kbd, samp { white-space: pre-wrap; }
+#fonttest {
+font-family: monospace;
+}
+.js-error {
+color: darkred;
+}
+</style>
+<style type="text/css">
+.rendered_html {color: black;}
+.rendered_html em {font-style: italic;}
+.rendered_html strong {font-weight: bold;}
+.rendered_html u {text-decoration: underline;}
+.rendered_html :link { text-decoration: underline }
+.rendered_html :visited { text-decoration: underline }
+.rendered_html h1 {font-size: 197%; margin: .65em 0; font-weight: bold;}
+.rendered_html h2 {font-size: 153.9%; margin: .75em 0; font-weight: bold;}
+.rendered_html h3 {font-size: 123.1%; margin: .85em 0; font-weight: bold;}
+.rendered_html h4 {font-size: 100% margin: 0.95em 0; font-weight: bold;}
+.rendered_html h5 {font-size: 85%; margin: 1.5em 0; font-weight: bold;}
+.rendered_html h6 {font-size: 77%; margin: 1.65em 0; font-weight: bold;}
+.rendered_html ul {list-style:disc; margin: 1em 2em;}
+.rendered_html ul ul {list-style:square; margin: 0em 2em;}
+.rendered_html ul ul ul {list-style:circle; margin-left: 0em 2em;}
+.rendered_html ol {list-style:upper-roman; margin: 1em 2em;}
+.rendered_html ol ol {list-style:upper-alpha; margin: 0em 2em;}
+.rendered_html ol ol ol {list-style:decimal; margin: 0em 2em;}
+.rendered_html ol ol ol ol {list-style:lower-alpha; margin: 0em 2em;}
+.rendered_html ol ol ol ol ol {list-style:lower-roman; margin: 0em 2em;}
+.rendered_html hr {
+color: black;
+background-color: black;
+}
+.rendered_html pre {
+margin: 1em 2em;
+}
+.rendered_html blockquote {
+margin: 1em 2em;
+}
+.rendered_html table {
+border: 1px solid black;
+border-collapse: collapse;
+margin: 1em 2em;
+}
+.rendered_html td {
+border: 1px solid black;
+text-align: left;
+vertical-align: middle;
+padding: 4px;
+}
+.rendered_html th {
+border: 1px solid black;
+text-align: left;
+vertical-align: middle;
+padding: 4px;
+font-weight: bold;
+}
+.rendered_html tr {
+border: 1px solid black;
+}
+.rendered_html p + p {
+margin-top: 1em;
+}
+</style>
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export
+*/
+body {
+overflow: visible;
+padding: 8px;
+font-size: 105%;
+}
+.input_area {
+padding: 0.4em;
+}
+</style>
+<meta charset="UTF-8">
+<style type="text/css">
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+</script>
+<script type="text/javascript">
+init_mathjax = function() {
+if (window.MathJax) {
+// MathJax loaded
+MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+},
+displayAlign: 'left', // Change this to 'center' to center equations.
+"HTML-CSS": {
+styles: {'.MathJax_Display': {"margin": 0}}
+}
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+}
+}
+init_mathjax();
+</script>
+--></style>
+<style id='template-skin-1' type='text/css'><!--
+body {
+min-width: 900px;
+}
+.content-outer, .content-fauxcolumn-outer, .region-inner {
+min-width: 900px;
+max-width: 900px;
+_width: 900px;
+}
+.main-inner .columns {
+padding-left: 0px;
+padding-right: 0px;
+}
+.main-inner .fauxcolumn-center-outer {
+left: 0px;
+right: 0px;
+/* IE6 does not respect left and right together */
+_width: expression(this.parentNode.offsetWidth -
+parseInt("0px") -
+parseInt("0px") + 'px');
+}
+.main-inner .fauxcolumn-left-outer {
+width: 0px;
+}
+.main-inner .fauxcolumn-right-outer {
+width: 0px;
+}
+.main-inner .column-left-outer {
+width: 0px;
+right: 100%;
+margin-left: -0px;
+}
+.main-inner .column-right-outer {
+width: 0px;
+margin-right: -0px;
+}
+#layout {
+min-width: 0;
+}
+#layout .content-outer {
+min-width: 0;
+width: 800px;
+}
+#layout .region-inner {
+min-width: 0;
+width: auto;
+}
+body#layout div.add_widget {
+padding: 8px;
+}
+body#layout div.add_widget a {
+margin-left: 32px;
+}
+--></style>
+<style>
+    body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo);}
+    
+@media (max-width: 200px) { body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo&options=w200);}}
+@media (max-width: 400px) and (min-width: 201px) { body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo&options=w400);}}
+@media (max-width: 800px) and (min-width: 401px) { body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo&options=w800);}}
+@media (max-width: 1200px) and (min-width: 801px) { body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo&options=w1200);}}
+/* Last tag covers anything over one higher than the previous max-size cap. */
+@media (min-width: 1201px) { body {background-image:url(\/\/themes.googleusercontent.com\/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo&options=w1600);}}
+  </style>
+<link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=462991820843482154&amp;zx=77d29f22-b69f-449f-972d-c64d50e38db7' media='none' onload='if(media!=&#39;all&#39;)media=&#39;all&#39;' rel='stylesheet'/><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=462991820843482154&amp;zx=77d29f22-b69f-449f-972d-c64d50e38db7' rel='stylesheet'/></noscript>
+</head>
+<body class='loading variant-screen'>
+<div class='navbar section' id='navbar' name='Navbar'><div class='widget Navbar' data-version='1' id='Navbar1'><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"></div>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript">
+      gapi.load("gapi.iframes:gapi.iframes.style.bubble", function() {
+        if (gapi.iframes && gapi.iframes.getContext) {
+          gapi.iframes.getContext().openChild({
+              url: 'https://www.blogger.com/navbar.g?targetBlogID\x3d462991820843482154\x26blogName\x3dFernando+Perez\x26publishMode\x3dPUBLISH_MODE_HOSTED\x26navbarType\x3dLIGHT\x26layoutType\x3dLAYOUTS\x26searchRoot\x3dhttp://blog.fperez.org/search\x26blogLocale\x3den\x26v\x3d2\x26homepageUrl\x3dhttp://blog.fperez.org/\x26targetPostID\x3d8675842404944082544\x26blogPostOrPageUrl\x3dhttp://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html\x26vt\x3d7726316719189879628',
+              where: document.getElementById("navbar-iframe-container"),
+              id: "navbar-iframe"
+          });
+        }
+      });
+    </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<div class='body-fauxcolumns'>
+<div class='fauxcolumn-outer body-fauxcolumn-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<div class='content'>
+<div class='content-fauxcolumns'>
+<div class='fauxcolumn-outer content-fauxcolumn-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<div class='content-outer'>
+<div class='content-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left content-fauxborder-left'>
+<div class='fauxborder-right content-fauxborder-right'></div>
+<div class='content-inner'>
+<header>
+<div class='header-outer'>
+<div class='header-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left header-fauxborder-left'>
+<div class='fauxborder-right header-fauxborder-right'></div>
+<div class='region-inner header-inner'>
+<div class='header section' id='header' name='Header'><div class='widget Header' data-version='1' id='Header1'>
+<div id='header-inner'>
+<div class='titlewrapper'>
+<h1 class='title'>
+<a href='http://blog.fperez.org/'>
+Fernando Perez
+</a>
+</h1>
+</div>
+<div class='descriptionwrapper'>
+<p class='description'><span>Thoughts and notes on open scientific computing, with a focus on Python-based tools (IPython, numpy, scipy, matplotlib and friends).</span></p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class='header-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</header>
+<div class='tabs-outer'>
+<div class='tabs-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left tabs-fauxborder-left'>
+<div class='fauxborder-right tabs-fauxborder-right'></div>
+<div class='region-inner tabs-inner'>
+<div class='tabs no-items section' id='crosscol' name='Cross-Column'></div>
+<div class='tabs no-items section' id='crosscol-overflow' name='Cross-Column 2'></div>
+</div>
+</div>
+<div class='tabs-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='main-outer'>
+<div class='main-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left main-fauxborder-left'>
+<div class='fauxborder-right main-fauxborder-right'></div>
+<div class='region-inner main-inner'>
+<div class='columns fauxcolumns'>
+<div class='fauxcolumn-outer fauxcolumn-center-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='fauxcolumn-outer fauxcolumn-left-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<div class='fauxcolumn-outer fauxcolumn-right-outer'>
+<div class='cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left'>
+<div class='fauxborder-right'></div>
+<div class='fauxcolumn-inner'>
+</div>
+</div>
+<div class='cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<!-- corrects IE6 width calculation -->
+<div class='columns-inner'>
+<div class='column-center-outer'>
+<div class='column-center-inner'>
+<div class='main section' id='main' name='Main'><div class='widget Blog' data-version='1' id='Blog1'>
+<div class='blog-posts hfeed'>
+
+          <div class="date-outer">
+        
+<h2 class='date-header'><span>Friday, September 7, 2012</span></h2>
+
+          <div class="date-posts">
+        
+<div class='post-outer'>
+<div class='post hentry' itemprop='blogPost' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+<meta content='462991820843482154' itemprop='blogId'/>
+<meta content='8675842404944082544' itemprop='postId'/>
+<a name='8675842404944082544'></a>
+<h3 class='post-title entry-title' itemprop='name'>
+Blogging with the IPython notebook
+</h3>
+<div class='post-header'>
+<div class='post-header-line-1'></div>
+</div>
+<div class='post-body entry-content' id='post-body-8675842404944082544' itemprop='description articleBody'>
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<p><strong>Update (May 2014):</strong> Please note that these instructions are outdated. while it is still possible (and in fact easier) to blog with the Notebook, the exact process has changed now that IPython has an official conversion framework. However, Blogger isn't the ideal platform for that (though it can be made to work). If you are interested in using the Notebook as a tool for technical blogging, I recommend looking at <a href="http://jakevdp.github.io/blog/2013/05/07/migrating-from-octopress-to-pelican/">Jake van der Plas' Pelican support</a> or <a href="http://www.damian.oquanta.info/posts/deploy-your-nikola-powered-blog-content-from-the-ipython-notebook.html"> Damián Avila's support in Nikola</a>.</p>
+
+
+
+<p><strong>Update:</strong> made full github repo for blog-as-notebooks, and updated instructions on how to more easily configure everything and use the newest nbconvert for a more streamlined workflow.</p>
+<p>Since the notebook was introduced with <a href="http://ipython.org/ipython-doc/rel-0.12.1/whatsnew/version0.12.html">IPython 0.12</a>, it has proved to be very popular, and we are seeing great adoption of the tool and the underlying file format in research and education.  One persistent question we've had since the beginning (even prior to its official release) was whether it would be possible to easily write blog posts using the notebook.  The combination of easy editing in markdown with the notebook's ability to contain code, figures and results, makes it an ideal platform for quick authoring of technical documents, so being able to post to a blog is a natural request.</p>
+<p>Today, in answering a query about this from a colleague, I decided to try again the status of our conversion pipeline, and I'm happy to report that with a bit of elbow-grease, at least on Blogger things work pretty well!<br />
+</p>
+<p>This post was <em>entirely</em> written as a notebook, and in fact I have now created a <a href="https://github.com/fperez/blog">github repo</a>, which means that you can see it directly <a href="http://nbviewer.ipython.org/urls/raw.github.com/fperez/blog/master/120907-Blogging with the IPython Notebook.ipynb">rendered in IPyhton's nbviewer app</a>.</p>
+<p>The purpose of this post is to quickly provide a set of instructions on how I got it to work, and to test things out.  Please note: this requires code that isn't quite ready for prime-time and is still under heavy development, so expect some assembly.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Converting your notebook to html with nbconvert
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first thing you will need is our <a href="https://github.com/ipython/nbconvert">nbconvert</a> tool that converts notebooks across formats.  The README file in the repo contains the requirements for nbconvert (basically <a href="http://pypi.python.org/pypi/Markdown/">python-markdown</a>, <a href="http://johnmacfarlane.net/pandoc">pandoc</a>, <a href="http://docutils.svn.sourceforge.net/viewvc/docutils/trunk/docutils/?view=tar">docutils from SVN</a> and <a href="http://pygments.org">pygments</a>).</p>
+<p>Once you have nbconvert installed, you can convert your notebook to Blogger-friendly html with:</p>
+<pre><code>nbconvert -f blogger-html your_notebook.ipynb
+</code></pre>
+<p>This will leave two files in your computer, one named <code>your_notebook.html</code> and one named <code>your_noteboook_header.html</code>; it might also create a directory called <code>your_notebook_files</code> if needed for ancillary files.  The first file will contain the body of your post and can be pasted wholesale into the Blogger editing area. The second file contains the CSS and Javascript material needed for the notebook to display correctly, you should only need to use this once to configure your blogger setup (see below):</p>
+<pre><code># Only one notebook so far
+(master)longs[blog]&gt; ls
+120907-Blogging with the IPython Notebook.ipynb  fig/  old/
+
+# Now run the conversion:
+(master)longs[blog]&gt; nbconvert.py -f blogger-html 120907-Blogging\ with\ the\ IPython\ Notebook.ipynb
+
+# This creates the header and html body files
+(master)longs[blog]&gt; ls
+120907-Blogging with the IPython Notebook_header.html  fig/
+120907-Blogging with the IPython Notebook.html         old/
+120907-Blogging with the IPython Notebook.ipynb
+</code></pre>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Configuring your Blogger blog to accept notebooks
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The notebook uses a lot of custom CSS for formatting input and output, as well as Javascript from <a href="http://www.mathjax.org">MathJax</a> to display mathematical notation.  You will need all this CSS and the Javascript calls in your blog's configuration for your notebook-based posts to display correctly:</p>
+<ol>
+<li>Once authenticated, go to your blog's overview page by clicking on its title.</li>
+<li>Click on templates (left column) and customize using the Advanced options.</li>
+<li>Scroll down the middle column until you see an "Add CSS" option.</li>
+<li>Copy entire the contents of the <code>_header</code> file into the CSS box.</li>
+</ol>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's it, and you shouldn't need to do anything else as long as the CSS we use in the notebooks doesn't drastically change.  This customization of your blog needs to be done only once.</p>
+<p>While you are at it, I recommend you change the width of your blog so that cells have enough space for clean display; in experimenting I found out that the default template was too narrow to properly display code cells, producing a lot of text wrapping that impaired readability.  I ended up using a layout with a single column for all blog contents, putting the blog archive at the bottom.  Otherwise, if I kept the right sidebar, code cells got too squished in the post area.</p>
+<p>I also had problems using some of the fancier templates available from 'Dynamic Views', in that I could never get inline math to render.  But sticking to those from the Simple or 'Picture Window' categories worked fine and they still allow for a lot of customization.</p>
+<p><em>Note:</em> if you change blog templates, Blogger does destroy your custom CSS, so you may need to repeat the above steps in that case.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Adding the actual posts
+
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, whenever you want to write a new post as a notebook, simply convert the <code>.ipynb</code> file to blogger-html and copy its entire contents to the clipboard. Then go to the 'raw html' view of the post, remove anything Blogger may have put there by default, and paste.  You should also click on the 'options' tab (right hand side) and select both <code>Show HTML literally</code> and <code>Use &lt;br&gt; tag</code>, else your paragraph breaks will look all wrong.</p>
+<p>That's it!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  What can you put in?
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I will now add a few bits of code, plots, math, etc, to show which kinds of content can be put in and work out of the box.  These are mostly bits copied from our <a href="https://github.com/ipython/ipython/tree/master/docs/examples/notebooks">example notebooks</a> so the actual content doesn't matter, I'm just illustrating the <em>kind</em> of content that works.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Let&#39;s initialize pylab so we can plot later</span>
+<span class="o">%</span><span class="k">pylab</span> <span class="n">inline</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>
+Welcome to pylab, a matplotlib-based Python environment [backend: module://IPython.zmq.pylab.backend_inline].
+For more information, type &apos;help(pylab)&apos;.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With pylab loaded, the usual matplotlib operations work</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">r&#39;$\sin(x)$&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">r&#39;$\cos(x)$&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">r&#39;Two familiar functions&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [2]:</div>
+<div class="output_subarea output_pyout">
+<pre>&lt;matplotlib.legend.Legend at 0x3128610&gt;</pre>
+</div>
+</div>
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The notebook, thanks to MathJax, has great LaTeX support, so that you can type inline math $(1,\gamma,\ldots, \infty)$ as well as displayed equations:</p>
+<p>$$
+e^{i \pi}+1=0
+$$</p>
+<p>but by loading the <a href="http://sympy.org">sympy</a> extension, it's easy showcase math <em>output</em> from Python computations, where we don't type the math expressions in text, and instead the results of code execution are displayed in mathematical format:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">sympyprinting</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sym</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s">&quot;x y z&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From simple algebraic expressions</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">Rational</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">pi</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">I</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [4]:</div>
+<div class="output_subarea output_pyout">
+$$\frac{3}{2} \pi + \frac{e^{\mathbf{\imath} x}}{x^{2} + y}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">eq</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">eq</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [5]:</div>
+<div class="output_subarea output_pyout">
+$$\left(x + 1\right) \left(x + y\right)^{2}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">expand</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [6]:</div>
+<div class="output_subarea output_pyout">
+$$x^{3} + 2 x^{2} y + x^{2} + x y^{2} + 2 x y + y^{2}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To calculus</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">diff</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [7]:</div>
+<div class="output_subarea output_pyout">
+$$- 4 \frac{x \operatorname{sin}\left(x^{2}\right) \operatorname{cos}\left(x^{2}\right)}{x + 1} - \frac{\operatorname{cos}^{2}\left(x^{2}\right)}{\left(x + 1\right)^{2}}$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For more examples of how to use sympy in the notebook, you can see <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/master/docs/examples/notebooks/sympy.ipynb">our example sympy notebook</a> or go to the <a href="http://sympy.org">sympy website</a> for much more documentation.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  You can easily include formatted text and code with markdown
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can <em>italicize</em>, <strong>boldface</strong></p>
+<ul>
+<li>build</li>
+<li>lists</li>
+</ul>
+<p>and embed code meant for illustration instead of execution in Python:</p>
+<pre><code>def f(x):
+    """a docstring"""
+    return x**2
+</code></pre>
+<p>or other languages:</p>
+<pre><code>if (i=0; i&lt;n; i++) {
+  printf("hello %d\n", i);
+  x += 4;
+}
+</code></pre>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And since the notebook can store displayed images in the file itself, you can show images which will be embedded in your post:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;fig/img_4926.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [8]:</div>
+<div class="output_subarea output_pyout">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can embed YouTube videos using the IPython object, this is my recent talk at SciPy'12 about IPython:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s">&#39;iwVvqwLDsJo&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [9]:</div>
+<div class="output_subarea output_pyout">
+
+            <iframe
+                width="400"
+                height="300"
+                src="http://www.youtube.com/embed/iwVvqwLDsJo"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+        
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Including code examples from other languages
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using our various script cell magics, it's easy to include code in a variety of other languages</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">ruby</span>
+<span class="n">puts</span> <span class="s">&quot;Hello from Ruby #{RUBY_VERSION}&quot;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>Hello from Ruby 1.8.7
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">bash</span>
+<span class="n">echo</span> <span class="s">&quot;hello from $BASH&quot;</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>hello from /bin/bash
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And tools like the Octave and R magics let you interface with entire computational systems directly from the notebook; this is the Octave magic for which <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/d835d46dcc50043971b4a9915398bad1b5d63648/docs/examples/notebooks/octavemagic_extension.ipynb">our example notebook contains more details</a>:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">octavemagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">octave</span> <span class="o">-</span><span class="n">s</span> <span class="mi">500</span><span class="p">,</span><span class="mi">500</span>
+
+<span class="c"># butterworth filter, order 2, cutoff pi/2 radians</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.292893218813452</span>  <span class="mf">0.585786437626905</span>  <span class="mf">0.292893218813452</span><span class="p">];</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span>  <span class="mi">0</span>  <span class="mf">0.171572875253810</span><span class="p">];</span>
+<span class="n">freqz</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/3607712653c66d63e0d7f13f073bde8c0f209ba8/docs/examples/notebooks/rmagic_extension.ipynb">rmagic extension</a> does a similar job, letting you call R directly from the notebook, passing variables back and forth between Python and R.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Start by creating some data in Python</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Which can then be manipulated in R, with results available back in Python (in <code>XYcoef</code>):</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">R</span> <span class="o">-</span><span class="n">i</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">-</span><span class="n">o</span> <span class="n">XYcoef</span>
+<span class="n">XYlm</span> <span class="o">=</span> <span class="n">lm</span><span class="p">(</span><span class="n">Y</span><span class="o">~</span><span class="n">X</span><span class="p">)</span>
+<span class="n">XYcoef</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">XYlm</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">summary</span><span class="p">(</span><span class="n">XYlm</span><span class="p">))</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">XYlm</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+<pre>
+Call:
+lm(formula = Y ~ X)
+
+Residuals:
+   1    2    3    4    5 
+-0.2  0.9 -1.0  0.1  0.2 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   3.2000     0.6164   5.191   0.0139 *
+X             0.9000     0.2517   3.576   0.0374 *
+---
+Signif. codes:  0 &#8216;***&#8217; 0.001 &#8216;**&#8217; 0.01 &#8216;*&#8217; 0.05 &#8216;.&#8217; 0.1 &#8216; &#8217; 1 
+
+Residual standard error: 0.7958 on 3 degrees of freedom
+Multiple R-squared:  0.81, Adjusted R-squared: 0.7467 
+F-statistic: 12.79 on 1 and 3 DF,  p-value: 0.03739 
+
+</pre>
+</div>
+</div>
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_display_data">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">XYcoef</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt">Out [17]:</div>
+<div class="output_subarea output_pyout">
+<pre>[ 3.2  0.9]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And finally, in the same spirit, the <a href="http://nbviewer.ipython.org/urls/raw.github.com/ipython/ipython/3607712653c66d63e0d7f13f073bde8c0f209ba8/docs/examples/notebooks/cython_extension.ipynb">cython magic extension</a> lets you call Cython code directly from the notebook:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">load_ext</span> <span class="n">cythonmagic</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">cython</span> <span class="o">-</span><span class="n">lm</span>
+<span class="kn">from</span> <span class="nn">libc.math</span><span class="err"> </span><span class="nn">cimport</span><span class="err"> </span><span class="nn">sin</span>
+<span class="k">print</span> <span class="s">&#39;sin(1)=&#39;</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+<div class="vbox output_wrapper">
+<div class="output vbox">
+<div class="hbox output_area">
+<div class="prompt output_prompt"></div>
+<div class="output_subarea output_stream output_stdout">
+<pre>sin(1)= 0.841470984808
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>
+  Keep in mind, this is still experimental code!
+</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hopefully this post shows that the system is already useful to communicate technical content in blog form with a minimal amount of effort.  But please note that we're still in heavy development of many of these features, so things are susceptible to changing in the near future.  By all means join the <a href="http://mail.scipy.org/mailman/listinfo/ipython-dev">IPython dev mailing list</a> if you'd like to participate and help us make IPython a better tool!</p>
+</div>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn' itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person'>
+<meta content='https://plus.google.com/105051551851350439748' itemprop='url'/>
+<a class='g-profile' href='https://plus.google.com/105051551851350439748' rel='author' title='author profile'>
+<span itemprop='name'>Fernando Perez</span>
+</a>
+</span>
+</span>
+<span class='post-timestamp'>
+at
+<meta content='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html' itemprop='url'/>
+<a class='timestamp-link' href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html' rel='bookmark' title='permanent link'><abbr class='published' itemprop='datePublished' title='2012-09-07T00:26:00-07:00'>9/07/2012 12:26:00 AM</abbr></a>
+</span>
+<span class='post-comment-link'>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='https://www.blogger.com/email-post.g?blogID=462991820843482154&postID=8675842404944082544' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://img1.blogblog.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-921806874'>
+<a href='https://www.blogger.com/post-edit.g?blogID=462991820843482154&postID=8675842404944082544&from=pencil' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='https://resources.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+<div class='post-share-buttons goog-inline-block'>
+<a class='goog-inline-block share-button sb-email' href='https://www.blogger.com/share-post.g?blogID=462991820843482154&postID=8675842404944082544&target=email' target='_blank' title='Email This'><span class='share-button-link-text'>Email This</span></a><a class='goog-inline-block share-button sb-blog' href='https://www.blogger.com/share-post.g?blogID=462991820843482154&postID=8675842404944082544&target=blog' onclick='window.open(this.href, "_blank", "height=270,width=475"); return false;' target='_blank' title='BlogThis!'><span class='share-button-link-text'>BlogThis!</span></a><a class='goog-inline-block share-button sb-twitter' href='https://www.blogger.com/share-post.g?blogID=462991820843482154&postID=8675842404944082544&target=twitter' target='_blank' title='Share to Twitter'><span class='share-button-link-text'>Share to Twitter</span></a><a class='goog-inline-block share-button sb-facebook' href='https://www.blogger.com/share-post.g?blogID=462991820843482154&postID=8675842404944082544&target=facebook' onclick='window.open(this.href, "_blank", "height=430,width=640"); return false;' target='_blank' title='Share to Facebook'><span class='share-button-link-text'>Share to Facebook</span></a><a class='goog-inline-block share-button sb-pinterest' href='https://www.blogger.com/share-post.g?blogID=462991820843482154&postID=8675842404944082544&target=pinterest' target='_blank' title='Share to Pinterest'><span class='share-button-link-text'>Share to Pinterest</span></a><div class='goog-inline-block google-plus-share-container'><g:plusone source='blogger:blog:plusone' href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html' size='medium' width='300' annotation='inline'/></div>
+</div>
+<span class='post-backlinks post-comment-link'>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://blog.fperez.org/search/label/ipython' rel='tag'>ipython</a>,
+<a href='http://blog.fperez.org/search/label/scipy' rel='tag'>scipy</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<div class='comments' id='comments'>
+<a name='comments'></a>
+<h4>13 comments:</h4>
+<div id='Blog1_comments-block-wrapper'>
+<dl class='avatar-comment-indent' id='comments-block'>
+<dt class='comment-author ' id='c3434380491180739028'>
+<a name='c3434380491180739028'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="https://www.blogger.com/profile/08519741739605098176" rel="nofollow" onclick="" class="avatar-hovercard" id="av-3434380491180739028-08519741739605098176"><img src="//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35" width="35" height="35" alt="" title="afonit">
+
+</a></span></div>
+<a href='https://www.blogger.com/profile/08519741739605098176' rel='nofollow'>afonit</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3434380491180739028'>
+<p>
+wow
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1347636423778#c3434380491180739028' title='comment permalink'>
+September 14, 2012 at 8:27 AM
+</a>
+<span class='item-control blog-admin pid-1620613682'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=3434380491180739028' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c5717380851877831932'>
+<a name='c5717380851877831932'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/09939826924117723404" rel="nofollow" onclick="" class="avatar-hovercard" id="av-5717380851877831932-09939826924117723404"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//4.bp.blogspot.com/_k1HWRGwOo2A/TBXFR48FTbI/AAAAAAAAAFU/SxyTGjTyZi0/S45-s35/pic.php%3Fuid%3DAAAAAQAQsxYIzaj_6YkO4naZsviSKgAAAAl88X5Sa-5PHdXIsnjQ3_wc" title="ToobLippe">
+
+<noscript><img src="//4.bp.blogspot.com/_k1HWRGwOo2A/TBXFR48FTbI/AAAAAAAAAFU/SxyTGjTyZi0/S45-s35/pic.php%3Fuid%3DAAAAAQAQsxYIzaj_6YkO4naZsviSKgAAAAl88X5Sa-5PHdXIsnjQ3_wc" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/09939826924117723404' rel='nofollow'>ToobLippe</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-5717380851877831932'>
+<p>
+This is realy cool. I will be using it for some work stuff soon. It would be great if the nbconvert once mature can be offered as an option in the notebook itself. then you can download it in any format you see fit. PS - the current nbconvert does not offer PDF support as stated in the readme doc? Am I correct or missing something. KEEP UP THE GREAT STUFF!
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1347810091882#c5717380851877831932' title='comment permalink'>
+September 16, 2012 at 8:41 AM
+</a>
+<span class='item-control blog-admin pid-894140267'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=5717380851877831932' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c1575264130193615554'>
+<a name='c1575264130193615554'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/10356196845031385491" rel="nofollow" onclick="" class="avatar-hovercard" id="av-1575264130193615554-10356196845031385491"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh6.googleusercontent.com/-upvrUshzjZ0/AAAAAAAAAAI/AAAAAAAAAoM/2idUKoCJFYg/s35-c/photo.jpg" title="David Ketcheson">
+
+<noscript><img src="//lh6.googleusercontent.com/-upvrUshzjZ0/AAAAAAAAAAI/AAAAAAAAAoM/2idUKoCJFYg/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/10356196845031385491' rel='nofollow'>David Ketcheson</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-1575264130193615554'>
+<p>
+Awesome.  Can you include animations (using matplotlib&#39;s animation library)?
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1347819694894#c1575264130193615554' title='comment permalink'>
+September 16, 2012 at 11:21 AM
+</a>
+<span class='item-control blog-admin pid-1551136535'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=1575264130193615554' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blog-author' id='c424467533485150511'>
+<a name='c424467533485150511'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/12945463674195535011" rel="nofollow" onclick="" class="avatar-hovercard" id="av-424467533485150511-12945463674195535011"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAHDU/TZoCmu6v7xM/s35-c/photo.jpg" title="Fernando Perez">
+
+<noscript><img src="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAHDU/TZoCmu6v7xM/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/12945463674195535011' rel='nofollow'>Fernando Perez</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-424467533485150511'>
+<p>
+@Tobb, nbconvert exports to latex, you can then run pdflatex yourself on the resulting tex file.  I guess we could add the &#39;pdflatex&#39; call ourselves, but that&#39;s just one command.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1347947450378#c424467533485150511' title='comment permalink'>
+September 17, 2012 at 10:50 PM
+</a>
+<span class='item-control blog-admin pid-921806874'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=424467533485150511' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blog-author' id='c2231119781003398990'>
+<a name='c2231119781003398990'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/12945463674195535011" rel="nofollow" onclick="" class="avatar-hovercard" id="av-2231119781003398990-12945463674195535011"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAHDU/TZoCmu6v7xM/s35-c/photo.jpg" title="Fernando Perez">
+
+<noscript><img src="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAHDU/TZoCmu6v7xM/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/12945463674195535011' rel='nofollow'>Fernando Perez</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2231119781003398990'>
+<p>
+@David, I haven&#39;t tried animations yet.  It would depend on how you put them in: if you have them in a video file referenced externally (say youtube) it should work.  But obviously if you mean the live animation running in a matplotlib window, that won&#39;t work, as that would require running the python code itself in the blog.  This is only hosting the static output, nothing more.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1347947520021#c2231119781003398990' title='comment permalink'>
+September 17, 2012 at 10:52 PM
+</a>
+<span class='item-control blog-admin pid-921806874'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=2231119781003398990' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c588227920634491595'>
+<a name='c588227920634491595'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="https://www.blogger.com/profile/03061430391787956267" rel="nofollow" onclick="" class="avatar-hovercard" id="av-588227920634491595-03061430391787956267"><img src="//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35" width="35" height="35" alt="" title="Nicolas Fauchereau">
+
+</a></span></div>
+<a href='https://www.blogger.com/profile/03061430391787956267' rel='nofollow'>Nicolas Fauchereau</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-588227920634491595'>
+<p>
+Honestly, the possibilities of the ipython notebook never stop to AMAZE me ... the %%R magic is just .. magic ... <br /><br />I started coding in python (switching from matlab) about 10 years ago and never ceased to have fun ... 
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1349665184109#c588227920634491595' title='comment permalink'>
+October 7, 2012 at 7:59 PM
+</a>
+<span class='item-control blog-admin pid-138411256'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=588227920634491595' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c8502408020110108827'>
+<a name='c8502408020110108827'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/10459600567285061387" rel="nofollow" onclick="" class="avatar-hovercard" id="av-8502408020110108827-10459600567285061387"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//2.bp.blogspot.com/-CkquKvVRftk/TqRc5uv575I/AAAAAAAAAFc/QH3Su5uVj2c/s35/Chrysanthemum.jpg" title="KAZHUTHA">
+
+<noscript><img src="//2.bp.blogspot.com/-CkquKvVRftk/TqRc5uv575I/AAAAAAAAAFc/QH3Su5uVj2c/s35/Chrysanthemum.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/10459600567285061387' rel='nofollow'>KAZHUTHA</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-8502408020110108827'>
+<p>
+Hey PLEASE HELP,<br /><br />I&#39;m trying to import an image to my ipython notebook. But don&#39;t know how to give the filename. Where should the image be stored to import it and how to give the filename? 
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1380211757504#c8502408020110108827' title='comment permalink'>
+September 26, 2013 at 9:09 AM
+</a>
+<span class='item-control blog-admin pid-582750556'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=8502408020110108827' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c3384122298863309325'>
+<a name='c3384122298863309325'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="https://www.blogger.com/profile/12092147749689162458" rel="nofollow" onclick="" class="avatar-hovercard" id="av-3384122298863309325-12092147749689162458"><img src="//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35" width="35" height="35" alt="" title="matus">
+
+</a></span></div>
+<a href='https://www.blogger.com/profile/12092147749689162458' rel='nofollow'>matus</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3384122298863309325'>
+<p>
+It almost works except it does not display math. nbconvert outputs math: \(\chi^2\) in the html file (basic template). This displays as  \(\chi^2\). I guess there is some problem with my CSS since with full template it displays properly. <br /><br />Also nbconvert does not output any header with css. Where should I get it? I just took this http://blog.louic.nl/wp-content/uploads/2013/09/custom.css What is missing there that would make math work?<br /><br />Thanks,<br /><br />Matus
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1390663912117#c3384122298863309325' title='comment permalink'>
+January 25, 2014 at 7:31 AM
+</a>
+<span class='item-control blog-admin pid-551418643'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=3384122298863309325' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blog-author' id='c8196187705813852438'>
+<a name='c8196187705813852438'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/12945463674195535011" rel="nofollow" onclick="" class="avatar-hovercard" id="av-8196187705813852438-12945463674195535011"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAIlg/XjzGZ7kyMRA/s35-c/photo.jpg" title="Fernando Perez">
+
+<noscript><img src="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAIlg/XjzGZ7kyMRA/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/12945463674195535011' rel='nofollow'>Fernando Perez</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-8196187705813852438'>
+<p>
+Hi @matus: things have changed a ton in nbconvert since this post was written. I would encourage you to ask specific questions on our <a href="http://mail.scipy.org/mailman/listinfo/ipython-dev" rel="nofollow">mailing list</a> so that others can assist as well and the replies are visible to the whole community.<br /><br />Because I hand-configured things over a year ago it still works for me, but one of our devs on the list would be far more able to help you than me on the current state of nbconvert.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1391025353581#c8196187705813852438' title='comment permalink'>
+January 29, 2014 at 11:55 AM
+</a>
+<span class='item-control blog-admin pid-921806874'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=8196187705813852438' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c7222737370791488616'>
+<a name='c7222737370791488616'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/13258714784998815707" rel="nofollow" onclick="" class="avatar-hovercard" id="av-7222737370791488616-13258714784998815707"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//4.bp.blogspot.com/_rie3_LUuhkk/TFfJyQ4x9vI/AAAAAAAAAA0/07HLyRW6IeA/S45-s35/n702759144_728450_102.jpg" title="Wilson Tiong">
+
+<noscript><img src="//4.bp.blogspot.com/_rie3_LUuhkk/TFfJyQ4x9vI/AAAAAAAAAA0/07HLyRW6IeA/S45-s35/n702759144_728450_102.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/13258714784998815707' rel='nofollow'>Wilson Tiong</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-7222737370791488616'>
+<p>
+This is awesome. the possibilities of ipython is unlimited.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1393216362953#c7222737370791488616' title='comment permalink'>
+February 23, 2014 at 8:32 PM
+</a>
+<span class='item-control blog-admin pid-677666067'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=7222737370791488616' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c3701754633493522626'>
+<a name='c3701754633493522626'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="https://www.blogger.com/profile/03467113161025762124" rel="nofollow" onclick="" class="avatar-hovercard" id="av-3701754633493522626-03467113161025762124"><img src="//lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35" width="35" height="35" alt="" title="Nathaniel Virgo">
+
+</a></span></div>
+<a href='https://www.blogger.com/profile/03467113161025762124' rel='nofollow'>Nathaniel Virgo</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3701754633493522626'>
+<p>
+Hi,<br /><br />Nice post, but it might be a good idea to put a notice at the top saying it&#39;s out of date, out of kindness to people like me who might put the effort into learning iPython notebooks for the purpose of blogging, only to discover it&#39;s no longer possible. As far as I can tell, there is no longer any way to do what you describe here. Even if there is, there&#39;s no step-by-step instructions anywhere, so those of us with limited knowledge of HTML will not be able to do this for the time being.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1399013851727#c3701754633493522626' title='comment permalink'>
+May 1, 2014 at 11:57 PM
+</a>
+<span class='item-control blog-admin pid-299821157'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=3701754633493522626' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blog-author' id='c1035543485613529028'>
+<a name='c1035543485613529028'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/12945463674195535011" rel="nofollow" onclick="" class="avatar-hovercard" id="av-1035543485613529028-12945463674195535011"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAIlg/XjzGZ7kyMRA/s35-c/photo.jpg" title="Fernando Perez">
+
+<noscript><img src="//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAIlg/XjzGZ7kyMRA/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/12945463674195535011' rel='nofollow'>Fernando Perez</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-1035543485613529028'>
+<p>
+Hi Nathaniel,<br /><br />you&#39;re completely right, sorry about that. I&#39;ve added a note with links to Jake&#39;s and Damian&#39;s tools, which are more modern an a better solution today.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1399020929821#c1035543485613529028' title='comment permalink'>
+May 2, 2014 at 1:55 AM
+</a>
+<span class='item-control blog-admin pid-921806874'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=1035543485613529028' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c2135797796436994051'>
+<a name='c2135797796436994051'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="https://www.blogger.com/profile/00200619203187719760" rel="nofollow" onclick="" class="avatar-hovercard" id="av-2135797796436994051-00200619203187719760"><img src="https://img1.blogblog.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="//lh5.googleusercontent.com/-mmd9OH_qvgY/AAAAAAAAAAI/AAAAAAAAAQo/O9nNWfGN1Js/s35-c/photo.jpg" title="Juan D&iacute;az Gonz&aacute;lez">
+
+<noscript><img src="//lh5.googleusercontent.com/-mmd9OH_qvgY/AAAAAAAAAAI/AAAAAAAAAQo/O9nNWfGN1Js/s35-c/photo.jpg" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='https://www.blogger.com/profile/00200619203187719760' rel='nofollow'>Juan Díaz González</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2135797796436994051'>
+<p>
+how to export the data from iphython qtconsole to a web done with django framework
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html?showComment=1420788650345#c2135797796436994051' title='comment permalink'>
+January 8, 2015 at 11:30 PM
+</a>
+<span class='item-control blog-admin pid-1337719950'>
+<a class='comment-delete' href='https://www.blogger.com/delete-comment.g?blogID=462991820843482154&postID=2135797796436994051' title='Delete Comment'>
+<img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+</dl>
+</div>
+<p class='comment-footer'>
+<a href='https://www.blogger.com/comment.g?blogID=462991820843482154&postID=8675842404944082544' onclick=''>Post a Comment</a>
+</p>
+<div id='backlinks-container'>
+<div id='Blog1_backlinks-container'>
+</div>
+</div>
+</div>
+</div>
+
+        </div></div>
+      
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-newer-link'>
+<a class='blog-pager-newer-link' href='http://blog.fperez.org/2012/10/help-save-open-space-in-bay-area-by.html' id='Blog1_blog-pager-newer-link' title='Newer Post'>Newer Post</a>
+</span>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href='http://blog.fperez.org/2012/01/ipython-notebook-historical.html' id='Blog1_blog-pager-older-link' title='Older Post'>Older Post</a>
+</span>
+<a class='home-link' href='http://blog.fperez.org/'>Home</a>
+</div>
+<div class='clear'></div>
+<div class='post-feeds'>
+<div class='feed-links'>
+Subscribe to:
+<a class='feed-link' href='http://blog.fperez.org/feeds/8675842404944082544/comments/default' target='_blank' type='application/atom+xml'>Post Comments (Atom)</a>
+</div>
+</div>
+<script type='text/javascript'>
+    window.___gcfg = { 'lang': 'en' };
+  </script>
+</div></div>
+</div>
+</div>
+<div class='column-left-outer'>
+<div class='column-left-inner'>
+<aside>
+</aside>
+</div>
+</div>
+<div class='column-right-outer'>
+<div class='column-right-inner'>
+<aside>
+</aside>
+</div>
+</div>
+</div>
+<div style='clear: both'></div>
+<!-- columns -->
+</div>
+<!-- main -->
+</div>
+</div>
+<div class='main-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+<footer>
+<div class='footer-outer'>
+<div class='footer-cap-top cap-top'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+<div class='fauxborder-left footer-fauxborder-left'>
+<div class='fauxborder-right footer-fauxborder-right'></div>
+<div class='region-inner footer-inner'>
+<div class='foot no-items section' id='footer-1'></div>
+<table border='0' cellpadding='0' cellspacing='0' class='section-columns columns-2'>
+<tbody>
+<tr>
+<td class='first columns-cell'>
+<div class='foot section' id='footer-2-1'><div class='widget BlogArchive' data-version='1' id='BlogArchive1'>
+<h2>Blog Archive</h2>
+<div class='widget-content'>
+<div id='ArchiveList'>
+<div id='BlogArchive1_ArchiveList'>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2013/'>
+2013
+</a>
+<span class='post-count' dir='ltr'>(4)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2013/11/'>
+November
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2013/07/'>
+July
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2013/05/'>
+May
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2013/04/'>
+April
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>
+
+        &#9660;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2012/'>
+2012
+</a>
+<span class='post-count' dir='ltr'>(4)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2012/11/'>
+November
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2012/10/'>
+October
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>
+
+        &#9660;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2012/09/'>
+September
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='posts'>
+<li><a href='http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html'>Blogging with the IPython notebook</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2012/01/'>
+January
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2011/'>
+2011
+</a>
+<span class='post-count' dir='ltr'>(4)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2011/05/'>
+May
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2011/04/'>
+April
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2011/03/'>
+March
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2011/02/'>
+February
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/'>
+2009
+</a>
+<span class='post-count' dir='ltr'>(6)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/12/'>
+December
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/11/'>
+November
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/09/'>
+September
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/06/'>
+June
+</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2009/03/'>
+March
+</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2008/'>
+2008
+</a>
+<span class='post-count' dir='ltr'>(2)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+        &#9658;&#160;
+      
+</span>
+</a>
+<a class='post-count-link' href='http://blog.fperez.org/2008/07/'>
+July
+</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=462991820843482154&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget&sectionId=footer-2-1' onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target='configBlogArchive1' title='Edit'>
+<img alt='' height='18' src='https://resources.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</td>
+<td class='columns-cell'>
+<div class='foot section' id='footer-2-2'><div class='widget Label' data-version='1' id='Label1'>
+<h2>Labels</h2>
+<div class='widget-content list-label-widget-content'>
+<ul>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/data%20science'>data science</a>
+</li>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/ipython'>ipython</a>
+</li>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/KnowlandPark'>KnowlandPark</a>
+</li>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/python'>python</a>
+</li>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/scipy'>scipy</a>
+</li>
+<li>
+<a dir='ltr' href='http://blog.fperez.org/search/label/software%20development'>software development</a>
+</li>
+</ul>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=462991820843482154&widgetType=Label&widgetId=Label1&action=editWidget&sectionId=footer-2-2' onclick='return _WidgetManager._PopupConfig(document.getElementById("Label1"));' target='configLabel1' title='Edit'>
+<img alt='' height='18' src='https://resources.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Profile' data-version='1' id='Profile1'>
+<h2>About Me</h2>
+<div class='widget-content'>
+<a href='https://plus.google.com/105051551851350439748'><img alt='My photo' class='profile-img' height='80' src='//lh3.googleusercontent.com/-tXRdWhnpvnE/AAAAAAAAAAI/AAAAAAAAQBM/lpbWfB9HHTI/s80-c/photo.jpg' width='80'/></a>
+<dl class='profile-datablock'>
+<dt class='profile-data'>
+<a class='profile-name-link g-profile' href='https://plus.google.com/105051551851350439748' rel='author' style='background-image: url(//www.google.com/images/icons/ui/gprofile_button-16.png);'>
+Fernando Perez
+</a>
+<br/>
+<div class='g-follow' data-annotation='bubble' data-height='20' data-href='https://plus.google.com/105051551851350439748'></div>
+</dt>
+<dd class='profile-textblock'><br></dd>
+</dl>
+<a class='profile-link' href='https://plus.google.com/105051551851350439748' rel='author'>View my complete profile</a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=462991820843482154&widgetType=Profile&widgetId=Profile1&action=editWidget&sectionId=footer-2-2' onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' target='configProfile1' title='Edit'>
+<img alt='' height='18' src='https://resources.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- outside of the include in order to lock Attribution widget -->
+<div class='foot section' id='footer-3' name='Footer'><div class='widget Attribution' data-version='1' id='Attribution1'>
+<div class='widget-content' style='text-align: center;'>
+Picture Window theme. Powered by <a href='https://www.blogger.com' target='_blank'>Blogger</a>.
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=462991820843482154&widgetType=Attribution&widgetId=Attribution1&action=editWidget&sectionId=footer-3' onclick='return _WidgetManager._PopupConfig(document.getElementById("Attribution1"));' target='configAttribution1' title='Edit'>
+<img alt='' height='18' src='https://resources.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+</div>
+<div class='footer-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</footer>
+<!-- content -->
+</div>
+</div>
+<div class='content-cap-bottom cap-bottom'>
+<div class='cap-left'></div>
+<div class='cap-right'></div>
+</div>
+</div>
+</div>
+<script type='text/javascript'>
+    window.setTimeout(function() {
+        document.body.className = document.body.className.replace('loading', '');
+      }, 10);
+  </script>
+<script src='https://apis.google.com/js/plusone.js' type='text/javascript'></script>
+<!--It is your responsibility to notify your visitors about cookies used on your blog. See http://www.blogger.com/go/cookiechoices for more details.-->
+<script defer='' src='/js/cookiechoices.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(event) {
+      window.cookieChoices && cookieChoices.showCookieConsentBar && cookieChoices.showCookieConsentBar(
+          (window.cookieOptions && cookieOptions.msg) || 'This site uses cookies from Google to deliver its services, to personalize ads and to analyze traffic. Information about your use of this site is shared with Google. By using this site, you agree to its use of cookies.',
+          (window.cookieOptions && cookieOptions.close) || 'Got it',
+          (window.cookieOptions && cookieOptions.learn) || 'Learn More',
+          (window.cookieOptions && cookieOptions.link) || 'https://www.blogger.com/go/blogspot-cookies');
+    });
+  </script>
+
+<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/3392677022-widgets.js"></script>
+<script type='text/javascript'>
+window['__wavt'] = 'AOuZoY4yD8rLPk1h1vC47x09pT1FTJcdKg:1505424324334';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d462991820843482154','//blog.fperez.org/2012/09/blogging-with-ipython-notebook.html','462991820843482154');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '462991820843482154', 'title': 'Fernando Perez', 'url': 'http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html', 'canonicalUrl': 'http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html', 'homepageUrl': 'http://blog.fperez.org/', 'searchUrl': 'http://blog.fperez.org/search', 'canonicalHomepageUrl': 'http://blog.fperez.org/', 'blogspotFaviconUrl': 'http://blog.fperez.org/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': true, 'httpsEnabled': false, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Fernando Perez - Atom\x22 href\x3d\x22http://blog.fperez.org/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22Fernando Perez - RSS\x22 href\x3d\x22http://blog.fperez.org/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Fernando Perez - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/462991820843482154/posts/default\x22 /\x3e\n\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Fernando Perez - Atom\x22 href\x3d\x22http://blog.fperez.org/feeds/8675842404944082544/comments/default\x22 /\x3e\n', 'meTag': '', 'openIdOpTag': '', 'googleProfileUrl': 'https://plus.google.com/105051551851350439748', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'ieCssRetrofitLinks': '\x3c!--[if IE]\x3e\x3cscript type\x3d\x22text/javascript\x22 src\x3d\x22https://www.blogger.com/static/v1/jsbin/35781802-ieretrofit.js\x22\x3e\x3c/script\x3e\n\x3c![endif]--\x3e', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/763b07d6b137b0c2', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'sharing': {'platforms': [{'name': 'Get link', 'key': 'link', 'shareMessage': 'Get link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Share to Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Share to Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Share to Pinterest', 'target': 'pinterest'}, {'name': 'Google+', 'key': 'googlePlus', 'shareMessage': 'Share to Google+', 'target': 'googleplus'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'googlePlusShareButtonWidth': 300, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27en\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': 'Read more', 'pageType': 'item', 'postId': '8675842404944082544', 'postImageUrl': 'data:image/png;base64,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\n', 'pageName': 'Blogging with the IPython notebook', 'pageTitle': 'Fernando Perez: Blogging with the IPython notebook'}}, {'name': 'features', 'data': {'lazy_images': 'false', 'unsupported_browser_message': 'false', 'lightbox_img_parsing': 'false', 'video_theatre_support': 'false', 'sharing_get_link_dialog': 'false'}}, {'name': 'messages', 'data': {'edit': 'Edit', 'linkCopiedToClipboard': 'Link copied to clipboard!', 'ok': 'Ok', 'postLink': 'Post Link'}}, {'name': 'template', 'data': {'name': 'Picture Window', 'localizedName': 'Picture Window', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': false, 'variant': 'screen', 'variantId': 'screen', 'variantName': 'Screen', 'localizedVariantName': 'Screen'}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Blogging with the IPython notebook', 'description': '  Update (May 2014):  Please note that these instructions are outdated. while it is still possible (and in fact easier) to blog with the Not...', 'featuredImage': 'data:image/png;base64,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\n', 'url': 'http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html', 'type': 'item', 'isSingleItem': true, 'isMultipleItems': false, 'isError': false, 'isPage': false, 'isPost': true, 'isHomepage': false, 'isArchive': false, 'isLabelSearch': false, 'postId': 8675842404944082544}}]);
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', null, document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': 'https://www.blogger.com/static/v1/jsbin/658758296-lbx.js', 'lightboxCssUrl': 'https://www.blogger.com/static/v1/v-css/368954415-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'footer-2-1', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr', 'loadingMessage': 'Loading\x26hellip;'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'footer-2-2', null, document.getElementById('Label1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'footer-2-2', null, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AttributionView', new _WidgetInfo('Attribution1', 'footer-3', null, document.getElementById('Attribution1'), {}, 'displayModeFull'));
+</script>
+</body>
+</html>
