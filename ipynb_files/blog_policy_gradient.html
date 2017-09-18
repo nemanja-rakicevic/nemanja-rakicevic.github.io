@@ -12117,18 +12117,13 @@ $\left(\frac{g}{h}\right)' = \frac{g'h - gh'}{h^2}$ and putting everything over 
 The gradient of an expression which doesn't contain $\sigma$ is 0.</p>
 <p>$
 \Large
-= \nabla_{\sigma} \left ( -\frac{(\theta^T s - \mu)^2}{2\sigma^2} \right )</p>
-<ul>
-<li>\frac{1}{\sigma\sqrt{2\pi}} \sqrt{2\pi}
-\
+= \nabla_{\sigma} \left ( -\frac{(\theta^T s - \mu)^2}{2\sigma^2} \right ) - \frac{1}{\sigma\sqrt{2\pi}} \sqrt{2\pi}
+\\
 \Large
-= -\frac{ \nabla<em>{\sigma}(\theta^T s - \mu)^2\sigma - (\theta^T s - \mu)^2 \nabla</em>{\sigma}(2\sigma^2)}{4\sigma^4}</li>
-<li>\frac{1}{\sigma}
-= -\frac{ 0 - (\theta^T s - \mu)^2 4\sigma}{4\sigma^4}</li>
-<li>\frac{1}{\sigma}
+= -\frac{ \nabla_{\sigma}(\theta^T s - \mu)^2\sigma - (\theta^T s - \mu)^2 \nabla_{\sigma}(2\sigma^2)}{4\sigma^4} - \frac{1}{\sigma}
+= -\frac{ 0 - (\theta^T s - \mu)^2 4\sigma}{4\sigma^4} - \frac{1}{\sigma}
 = \boxed{\frac{(\theta^T s - \mu)^2 - \sigma^2}{\sigma^3}}
-$</li>
-</ul>
+$</p>
 
 </div>
 </div>
