@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>PolicyGradient explained properly</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>blog_policy_gradient</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11783,8 +11783,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Most of blogs that try to explain RL approaches somehow either explain concepts on a very low level and/or just jumo in to complicated Deep examples. The research papers usually just explain concepts on a high level with maybe some pseudocode which is not straightforward to implement. Code implementations on GitHub are usually made to be self-contained and are complicated/require a lot of time to actually find basic examples.</p>
-<p>These are the reasons why I decided to make a basic step-by-step introduction, as well as to make a reminder for myself. Also, I needed to practice converting EQUATIONS to CODE.</p>
+<p><em>NOTE: Most of blogs that try to explain RL approaches somehow either explain concepts on a very low level and/or just jump in to complicated <strong>Deep</strong> examples.
+Research papers usually just explain concepts on a high level with maybe some pseudocode which is not straightforward to implement.
+Code implementations on GitHub are usually made to be self-contained and are complicated/require a lot of time to actually find basic examples.
+These are the reasons why I decided to make a basic step-by-step introduction, as well as to make a reminder for myself. Also, I needed to practice converting EQUATIONS to CODE.</em></p>
+<p>The full python implementation of the notions presented here integrated to test in the OpenAI's gym environment, can be found on my GitHub <a href="https://github.com/nemanja-rakicevic/rl_implementations/tree/master/policy_gradient_basic">https://github.com/nemanja-rakicevic/rl_implementations/tree/master/policy_gradient_basic</a> .</p>
 
 </div>
 </div>
@@ -11793,7 +11796,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-gradient-approach">Policy gradient approach<a class="anchor-link" href="#Policy-gradient-approach">&#182;</a></h2>
+<h2 id="Policy-gradient-approach-intuition">Policy gradient approach intuition<a class="anchor-link" href="#Policy-gradient-approach-intuition">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11801,13 +11804,399 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In reinforcement learning...</p>
-<p>We want to minimise some cost function, in our case the expected value of the returns during some trajectory
-\begin{equation}
-\label{eq:sedov}
-R(t)= A \left(\frac{E_0}{\rho_0}\right)^{1/5}t^{2/5}
-\end{equation}</p>
+<p>The goal of the policy gradient approach, and in general policy search methods, is to find a policy $\pi$, which is basically a function that maps some state observation information to the next action the agent should perform.</p>
+<p>A policy can be:</p>
+<ul>
+<li><strong>deterministic</strong> &nbsp;&nbsp;
+$\large a = \pi(s)$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+: always gives a deterministic value of an action for a certain input state observation $s$.</li>
+<li><strong>stochastic</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$\large a\sim\pi( a | s )$ &nbsp;&nbsp;
+: gives a probability distribution over the possible actions based on the input state.</li>
+</ul>
+<p>Since the policy is a funcion, there are many ways to chose the type of this function and the parameters $\large \theta$ which shape it. Therefore, in order to define our policy function $\large \pi_{\theta}(a|s)$, which will select the appropriate action in every state, we need to select the function family and find its optimal parameters.</p>
+<p>One way to measure the efficacy of a policy is to optimise some <strong>cost function</strong>.</p>
+<p>$$
+\Large
+J(\pi_{\theta}) = \mathbb{E}[R(\tau|\pi_{\theta})]
+$$</p>
+<p>In this case, the <strong>cost funciton</strong> is defined as the <strong>expected value of the returns along some trajectory obtained following a policy</strong>. This trajectory is defined as $\large \tau = (s_0, a_0, r_0, s_1, a_1, r_1, ... , s_T)$, a sequence of <em>state</em>, <em>action</em> and <em>reward</em> tuples, where $s_T$ is the <strong>terminal state</strong>.</p>
+<p>The <strong>return function</strong> $\large R(\tau)$ takes the sequence of rewards from a trajectory $\tau$ and returns one value. This can be either a cummulative sum, or more usually sum of discounted rewards 
+$
+\large
+R(\tau) = \sum_{i=0}^{T} \gamma^{i}r_i
+$
+where $\large\gamma$ is a <strong>discount factor</strong> that determines the influence of the rewards that occur further in the future.</p>
+<p>%TODO: add <span style="color:red; font-family:Georgia; font-size:2em;">FOTO.</span></p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Obtaining-the-optimal-parameters">Obtaining the optimal parameters<a class="anchor-link" href="#Obtaining-the-optimal-parameters">&#182;</a></h3><p>We have defined what we need to do, now we need to maximese the expected returns for our policy, by tweaking the policy parameters:
+$$
+\Large
+\theta^* = argmax_{\theta}(J(\pi_{\theta}))
+$$</p>
+<p>This is done iteratively by updating the parameter values $\large\theta = \theta + \Delta\theta$ where usually $\large\Delta\theta = - \alpha \frac{\partial J(\pi_{\theta})}{\partial \theta}$ with $\alpha$ being the <strong>learning rate</strong> and $\frac{\partial J(\pi_{\theta})}{\partial \theta}$ a derivative of the cost function with respect to the parameters.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Deriving-the-cost-function">Deriving the cost function<a class="anchor-link" href="#Deriving-the-cost-function">&#182;</a></h3><p>Here's the full representation of the cost function, according to the definition of expectation:
+$$
+\Large
+J(\pi_{\theta}) 
+= \mathbb{E}[R(\tau|\pi_{\theta})]
+= \int^T p(\tau|\pi_\theta)R(\tau|\pi_\theta)d\tau
+$$
+Where  $p(\tau|\pi_\theta)$ is basically the probability of seeing a trajectory $\tau$ conditioned on following the policy $\pi_\theta$, and it is calculated multiplying the probabilities of each step:</p>
+<p>$
+\large
+p(\tau|\pi_\theta) = p(s_0) \prod_{t=1}^T p(s_{t+1}|s_t,a_t) \pi(a_t|s_t)
+$</p>
+<p>where $p(s_{t+1}|s_t,a_t)$ is the <strong>transition probability</strong> (i.e. the <strong>MDP model</strong>).</p>
+<p>The derivative of the cost funtion w.r.t. the parameters is then:</p>
+<p>$
+\Large
+\frac{\partial J(\pi_{\theta})}{\partial \theta} = \nabla_\theta  J(\pi_{\theta})
+= \nabla_\theta  \int p(\tau|\pi_\theta)R(\tau|\pi_\theta)d\tau
+=   \int \nabla_\theta p(\tau|\pi_\theta)R(\tau|\pi_\theta)d\tau
+$</p>
+<p>Since this would require deriving a very long product, a logarithm derivative rule is applied where 
+$
+\large
+\nabla \log f(x) = \frac{1}{f(x)}\nabla f(x)
+$.
+In order to get this right-hand side form in equation above, we need to multiply it by $\large \frac{p(\tau|\pi_\theta)}{p(\tau|\pi_\theta)}$.</p>
+<p>Thus we have:</p>
+<p>$
+\Large
+\nabla_\theta  J(\pi_{\theta})
+= \int  p(\tau|\pi_\theta) \frac{\nabla_\theta p(\tau|\pi_\theta)}{p(\tau|\pi_\theta)} R(\tau|\pi_\theta)d\tau 
+= \int  p(\tau|\pi_\theta) \underline{ \nabla_\theta \log  p(\tau|\pi_\theta)  R(\tau|\pi_\theta)} d\tau 
+$</p>
+<hr>
+<p>What this actually tells us is that:</p>
+<ul>
+<li>the gradient of the expected returns is the expectation of the gradient of the log of the probability of the returns times the returns (underlined part).</li>
+</ul>
+<p>$$
+\Large
+\nabla_\theta  J(\pi_{\theta})
+= \mathbb{E}[ \nabla_\theta \log  p(\tau|\pi_\theta)  R(\tau|\pi_{\theta})]
+$$</p>
+<ul>
+<li>When we now develop $p(\tau|\pi_\theta)$, we see that now there is no need to take derivatives of the product, but of the sum, which is much easier.
+$
+\large
+p(\tau|\pi_\theta) = p(s_0) \prod_{t=1}^T p(s_{t+1}|s_t,a_t) \pi(a_t|s_t)
+\\
+\large
+\log p(\tau|\pi_\theta) = \sum_{t=1}^T \log \pi(a_t|s_t) + const
+$</li>
+</ul>
+<ul>
+<li>And its derivative becomes:
+$
+\large
+\nabla_\theta \log p(\tau|\pi_\theta) = \sum_{t=1}^T \nabla_\theta \log \pi(a_t|s_t)
+$</li>
+</ul>
+<hr>
+<p>Finally, the gradient of the cost function can be calculated approximately by sampling, using the iterative formula over K trajectories:
+$$
+\Large
+\nabla_\theta  J(\pi_{\theta})
+= \frac{1}{K} \sum_{i=0}^K  \left [  \sum_{t=1}^T \nabla_\theta \log \pi(a_t|s_t) \right ] R(\tau|\pi_{\theta}) 
+$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Deriving-the-policy.-Characteristic-eligibility">Deriving the policy. Characteristic eligibility<a class="anchor-link" href="#Deriving-the-policy.-Characteristic-eligibility">&#182;</a></h3><p>The remaining piece of the puzzle is the $\large \nabla_\theta \log \pi(a_t|s_t)$, also called <strong>Characteristic eligibility</strong>.
+This is now dependent on a particular function type we select for our policy. Below are a couple of examples, their derivations and code implementations.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Implementing-the-Gradient-Updates">Implementing the Gradient Updates<a class="anchor-link" href="#Implementing-the-Gradient-Updates">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Softmax-policy">Softmax policy<a class="anchor-link" href="#Softmax-policy">&#182;</a></h2><p>The Softmax policy parameterisation as presented in the original REINFORCE paper by Williams, is derived here.</p>
+<p>This policy gives the probability for each of the discrete action dimensions, so that the actions can be sampled:</p>
+<p>$\boxed{ \Large a \sim \pi(a|s) = \frac{e^{\theta_a^T s}}{\sum_{a'}e^{\theta_{a'}^T s}} }$</p>
+<p>In order to get the optimal policy we need to find the optimal parameters $\large \theta$, through the gradient of the cost function, so we need to calculate the characteristic eligibility.
+Each column of the parameter matrix $\large \theta_x$ corresponds to the approriate action $\large x$, and it's easier if we show them separately here:</p>
+<p>Using the property of the logarithm of a fraction is the nominator minus the denominator:</p>
+<p>$
+\Large
+\nabla_{\theta_x} \log \left [\frac{e^{\theta_a^T s}}{\sum_{a'}e^{\theta_{a'}^T s}}\right ]
+\\
+\Large
+= \nabla_{\theta_x} \log e^{\theta_a^T s} - \nabla_{\theta} \log \sum_{a'}e^{\theta_{a'}^T s}
+$</p>
+<p>Now, the first element is non-zero only if $\large \theta = \theta_a$. Meaning, we are calculating the parameters corresposponding to a particular action separately, so this first element will contribute only to the parameter column corresponting to action <strong>a</strong>.</p>
+<p>$ 
+\Large   
+\nabla_{\theta_x} \log e^{\theta_a^T s} =  
+\begin{cases}
+    s, &amp; \text{if } a = x\\
+    0,   &amp; \text{otherwise}
+\end{cases}
+$</p>
+<p>While the second part is further derived:</p>
+<p>$
+\Large
+\nabla_{\theta_x} \log \sum_{a'}e^{\theta_{a'}^T s}
+= \frac{1}{\sum_{a'}e^{\theta_{a'}^T s}}  \nabla_{\theta} \sum_{a'}e^{\theta_{a'}^T s}
+= \frac{ s \cdot e^{\theta_{a}^T s}}{\sum_{a'}e^{\theta_{a'}^T s}}
+= s \cdot \pi_{\theta_x}(a_x | s)
+$</p>
+<p>Where the gradient of the sum is nonzero only if $\large a=x$.</p>
+<p>Therefore, the updates will be:</p>
+<p>$
+\Large
+\text{if } \theta = \theta_x : s (1 - \pi_{\theta_x}(a_x | s) )
+\\
+\Large
+\text{if } \theta \neq \theta_x :  - \pi_{\theta_x}(a_x | s)
+$</p>
+<p>In python code, it would look like this, where we implement the gradient updates in a matrix form:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate characteristic eligibility</span>
+<span class="n">common_deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># encode if x==a</span>
+<span class="n">onehot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">onehot</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># final matrix of derivatives</span>
+<span class="n">deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">onehot</span> <span class="o">-</span> <span class="n">common_deriv</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Putting the whole parameter update together in python:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">updatePolicy_episodic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    
+    <span class="n">grad_pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">)</span>  
+    
+    <span class="c1"># Calculate episodic gradient update</span>
+    <span class="n">num_iter</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">)</span> <span class="c1"># episode length</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
+        
+        <span class="c1"># Calculate reward contribution with baseline</span>
+        <span class="n">total_return</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">**</span><span class="n">i</span> <span class="o">*</span> <span class="n">rew</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rew</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">:])])</span>
+        <span class="n">advantage</span>   <span class="o">=</span> <span class="n">total_return</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+        
+        <span class="c1"># Calculate characteristic eligibility</span>
+        <span class="n">current_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">common_deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">onehot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">onehot</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">current_state</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">onehot</span> <span class="o">-</span> <span class="n">common_deriv</span>
+        
+        <span class="c1"># Calculate gradient</span>
+        <span class="n">grad_pp</span> <span class="o">+=</span> <span class="n">deriv</span> <span class="o">*</span> <span class="n">advantage</span>
+    
+    <span class="c1"># Normalise gradient updates over the episode</span>
+    <span class="n">grad_pp</span> <span class="o">/=</span> <span class="n">num_iter</span>
+    
+    <span class="c1"># Update policy parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pp</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grad_pp</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Gaussian-Policy">Gaussian Policy<a class="anchor-link" href="#Gaussian-Policy">&#182;</a></h2><p>The Gaussian policy parameterisation as presented in the original REINFORCE paper by Williams, is derived here.</p>
+<p>The idea is to have a Gaussian function from which (continuous) actions can be sampled:</p>
+<p>$\boxed{ \Large a \sim = \pi(a|s) =\mathcal{N}(\mu, \sigma)}$</p>
+<p>Usually, the $\mu$ and $\sigma$ parameters of the policy can be obtained directly as 2 regression outputs of a Neural Network. However, here another approach is applied, where 3 sets of parameters are learned:</p>
+<ul>
+<li>Linear transformation parameters (like with softmax) - $\large \theta$</li>
+<li>Gaussian's mean - $\large \mu$</li>
+<li>Gaussian's covariance - $\large \sigma$</li>
+</ul>
+<p>The equation of the policy is given as in the paper as:
+$$
+\Large
+\pi(a | s,\mu,\sigma,\theta) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}}
+$$</p>
+<p>Therefore we need to derive the update characteristic eligibility equations for each of the parameters in order to get the parameter updates at each step.</p>
+<h3 id="Parameter-$\theta$">Parameter $\theta$<a class="anchor-link" href="#Parameter-$\theta$">&#182;</a></h3><p>Using the property of the logarithm of a fraction is the nominator minus the denominator:</p>
+<p>$
+\Large
+\nabla_{\theta} \log \left [\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} \right ]
+\\
+\Large
+= \nabla_{\theta} \log e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} - \nabla_{\theta} \log \sigma\sqrt{2\pi}
+$</p>
+<p>The log and exp cancel each other out, while second part does not cantain $\theta$ so it's gradient is 0.</p>
+<p>$
+\Large
+= \nabla_{\theta} \left ( -\frac{(\theta^T s - \mu)^2}{2\sigma^2} \right )- 0
+= -\frac{1}{2\sigma^2} 2 (\theta^T s - \mu) x
+= \boxed{\frac{\mu - \theta^T s}{\sigma^2}x}
+$</p>
+<h3 id="Parameter-$\mu$">Parameter $\mu$<a class="anchor-link" href="#Parameter-$\mu$">&#182;</a></h3><p>Same property:</p>
+<p>$
+\Large
+\nabla_{\mu} \log \left [\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} \right ]
+\\
+\Large
+= \nabla_{\mu} \log e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} - \nabla_{\mu} \log \sigma\sqrt{2\pi}
+$</p>
+<p>Again the log and exp cancel each other out, while second part does not cantain $\theta$ so it's gradient is 0, and then just chain rule.</p>
+<p>$
+\Large
+= \nabla_{\mu} \left ( -\frac{(\theta^T s - \mu)^2}{2\sigma^2} \right )- 0
+= -\frac{1}{2\sigma^2} 2 (\theta^T s - \mu) (-1)
+= \boxed{\frac{\theta^T s - \mu}{\sigma^2}}
+$</p>
+<h3 id="Parameter-$\sigma$">Parameter $\sigma$<a class="anchor-link" href="#Parameter-$\sigma$">&#182;</a></h3><p>Again:</p>
+<p>$
+\Large
+\nabla_{\sigma} \log \left [\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} \right ]
+\\
+\Large
+= \nabla_{\sigma} \log e^{-\frac{(\theta^T s - \mu)^2}{2\sigma^2}} - \nabla_{\sigma} \log \sigma\sqrt{2\pi}
+$</p>
+<p>Again the log and exp cancel each other out, and using the chain rule, the derivative of a fraction 
+$\left(\frac{g}{h}\right)' = \frac{g'h - gh'}{h^2}$ and putting everything over a common denominator.
+The gradient of an expression which doesn't contain $\sigma$ is 0.</p>
+<p>$
+\Large
+= \nabla_{\sigma} \left ( -\frac{(\theta^T s - \mu)^2}{2\sigma^2} \right )</p>
+<ul>
+<li>\frac{1}{\sigma\sqrt{2\pi}} \sqrt{2\pi}
+\
+\Large
+= -\frac{ \nabla<em>{\sigma}(\theta^T s - \mu)^2\sigma - (\theta^T s - \mu)^2 \nabla</em>{\sigma}(2\sigma^2)}{4\sigma^4}</li>
+<li>\frac{1}{\sigma}
+= -\frac{ 0 - (\theta^T s - \mu)^2 4\sigma}{4\sigma^4}</li>
+<li>\frac{1}{\sigma}
+= \boxed{\frac{(\theta^T s - \mu)^2 - \sigma^2}{\sigma^3}}
+$</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Code.-Putting-all-together">Code. Putting all together<a class="anchor-link" href="#Code.-Putting-all-together">&#182;</a></h3><p>Below is the python implementation of the equations above.</p>
+<p>The parameters are updated after each episode, and the for loop is over every step in the episode.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">updatePolicy_episodic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    
+    <span class="n">grad_pp0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># theta</span>
+    <span class="n">grad_pp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># mu </span>
+    <span class="n">grad_pp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># sigma</span>
+    
+    <span class="c1"># Calculate episodic gradient update</span>
+    <span class="n">num_iter</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">)</span> <span class="c1"># episode length</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
+        
+        <span class="c1"># Calculate reward contribution with baseline</span>
+        <span class="n">total_return</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">**</span><span class="n">i</span> <span class="o">*</span> <span class="n">rew</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rew</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">:])])</span>
+        <span class="n">advantage</span>    <span class="o">=</span> <span class="n">total_return</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rewards</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+
+        <span class="c1"># Calculate characteristic eligibility </span>
+        <span class="n">current_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">current_state</span><span class="p">)</span>
+
+        <span class="c1"># parameter linear</span>
+        <span class="n">eligib_0</span> <span class="o">=</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">current_state</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_action</span><span class="p">)</span>
+        <span class="n">grad_pp0</span> <span class="o">+=</span> <span class="n">eligib_0</span> <span class="o">*</span> <span class="n">advantage</span>
+        <span class="c1"># parameter mean</span>
+        <span class="n">eligib1</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">grad_pp1</span> <span class="o">+=</span> <span class="n">eligib1</span> <span class="o">*</span> <span class="n">advantage</span>
+        <span class="c1"># parameter sigma</span>
+        <span class="n">eligib2</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span>
+        <span class="n">grad_pp2</span> <span class="o">+=</span> <span class="n">eligib2</span> <span class="o">*</span> <span class="n">advantage</span>
+        
+    <span class="c1"># Normalise gradient updates over the episode</span>
+    <span class="n">grad_pp0</span> <span class="o">/=</span> <span class="n">num_iter</span>
+    <span class="n">grad_pp1</span> <span class="o">/=</span> <span class="n">num_iter</span>
+    <span class="n">grad_pp2</span> <span class="o">/=</span> <span class="n">num_iter</span>
+    
+    <span class="c1"># Update parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grad_pp0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">grad_pp1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">grad_pp2</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Multi-layer-Perceptron-Policy">Multi-layer Perceptron Policy<a class="anchor-link" href="#Multi-layer-Perceptron-Policy">&#182;</a></h2>
 </div>
 </div>
 </div>
