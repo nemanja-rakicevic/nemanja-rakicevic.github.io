@@ -53,7 +53,7 @@ hr.star-primary {
   padding: 0;
   border: none;
   border-top: solid 5px;
-  text-align: center;
+  text-align: left;
   max-width: 300px;
   margin: 25px auto 30px;
 }
