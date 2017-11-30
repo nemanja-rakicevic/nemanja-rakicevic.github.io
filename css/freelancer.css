@@ -32,7 +32,12 @@ a.active {
   color: #FFBC24; /*FFBC24  #18BC9C */
   outline: none;
 }
-h1,
+h1{
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
 h2,
 h3,
 h4,
@@ -49,7 +54,7 @@ hr.star-primary {
   border: none;
   border-top: solid 5px;
   text-align: center;
-  max-width: 250px;
+  max-width: 300px;
   margin: 25px auto 30px;
 }
 hr.star-light:after,
@@ -80,7 +85,7 @@ hr.star-primary:after {
   margin: 0 auto;
 }
 header {
-  text-align: center;
+  text-align: left;
   background: #18BC9C;
   color: white;
 }
@@ -98,11 +103,13 @@ header .intro-text .name {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 2em;
+  text-align: left;
 }
 
 header .intro-text .skills {
   font-size: 1.25em;
   font-weight: 300;
+  text-align: left;
 }
 @media (min-width: 768px) {
   header .container {
@@ -114,6 +121,7 @@ header .intro-text .skills {
   }
   header .intro-text .skills {
     font-size: 1.75em;
+    text-align: left;
   }
 }
 .navbar-custom {
