@@ -23,6 +23,7 @@
     <!-- Custom Fonts -->
     <!-- <link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/path/to/folder/css/academicons.min.css"/>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -107,10 +108,10 @@
                               <h1>about me:</h1>
                                 <hr class="star-light">
                                     <span class="skills">
-                                        Currently interning at <a href="https://deepmind.com/">DeepMind</a>.
-                                        <br>
-                                        <br>
                                         I am a PhD candidate at the <a href="http://www.imperial.ac.uk/robot-intelligence/">Robot Intelligence Lab</a>, Imperial College London, under the supervision of <a href="http://kormushev.com/">prof Petar Kormushev</a>.
+                                        <br>
+                                        <br>
+                                        Previously interned at <a href="https://deepmind.com/">DeepMind</a>.
                                         <br>
                                         <br>
                                         My research interests lie at the intersection of artificial intelligence and robotics. 
@@ -136,6 +137,7 @@
         </div>
       </div>
     </header>
+
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -244,6 +246,67 @@
               <!-- TOP STICKS TO TOP OF PAGE -->
               <!-- <p class="sticktop" <a href="#top"><strong>TOP</strong></a></p> -->
 
+              <br>
+              <h2>2019 
+              <!-- <a href="#top"><strong>TOP</strong></a> -->
+              </h2>
+                <ul>
+                  <li>
+                    <h4>Active Learning via Informed Search in Movement Parameter Space for Efficient Robot Task Learning and Transfer</h4>
+                      <p>N. Rakicevic and P. Kormushev. Autonomous Robots (AURO), 2019</p>
+                      <a id="reflink" href="https://link.springer.com/article/10.1007/s10514-019-09842-7">[pdf]<em class="ref"></em></a>
+                      <a id="reflink" onclick="$('#12c203d9e2c82318044f0613_bibtex').toggle('')">[bibtex]<em class="ref"></em></a>
+                      <!-- <a id="reflink" onclick="$('#55c203d9e2c82318044f0613_endnote).toggle('')">[endnote]<em class="ref"></em></a> -->
+                                
+                      <div class="reference" id="12c203d9e2c82318044f0613_bibtex" style="display: none;">
+                        <div class="header">Bibtex reference <a id="reflink" onclick="$('#12c203d9e2c82318044f0613_bibtex').toggle('')">[hide]</a></div>
+                        <div class="ref">
+                          <pre>
+@Article{Rakicevic2019,
+author="Rakicevic, Nemanja
+and Kormushev, Petar",
+title="Active learning via informed search in movement parameter space for efficient robot task learning and transfer",
+journal="Autonomous Robots",
+year="2019",
+month="Feb",
+day="21",
+abstract="Learning complex physical tasks via trial-and-error is still challenging for high-degree-of-freedom robots. Greatest challenges are devising a suitable objective function that defines the task, and the high sample complexity of learning the task. We propose a novel active learning framework, consisting of decoupled task model and exploration components, which does not require an objective function. The task model is specific to a task and maps the parameter space, defining a trial, to the trial outcome space. The exploration component enables efficient search in the trial-parameter space to generate the subsequent most informative trials, by simultaneously exploiting all the information gained from previous trials and reducing the task model's overall uncertainty. We analyse the performance of our framework in a simulation environment and further validate it on a challenging bimanual-robot puck-passing task. Results show that the robot successfully acquires the necessary skills after only 100 trials without any prior information about the task or target positions. Decoupling the framework's components also enables efficient skill transfer to new environments which is validated experimentally.",
+issn="1573-7527",
+doi="10.1007/s10514-019-09842-7",
+url="https://doi.org/10.1007/s10514-019-09842-7"
+}
+                          </pre>
+                        </div>
+                      </div> 
+                      <a id="reflink" href="https://sites.google.com/view/informedsearch">[website]<em class="ref"></em></a>  
+                                
+                      <!-- <div class="reference" id="55c203d9e2c82318044f0613_endnote" style="display: none;">
+                        <div class="header">Endnote reference <a id="reflink" onclick="$('#55c203d9e2c82318044f0613_endnote').toggle('')">[hide]</a></div>
+                          <div class="ref">
+                            <pre>
+%0 Conference Proceedings
+%T Multi-Modal Neural Conditional Ordinal Random Fields for Agreement Level Estimation
+%A Rakicevic, N.
+%A Rudovic, O.
+%A Petridis, S.
+%A Pantic, M.
+%B International Conference on Pattern Recognition (ICPR'16)
+%D 2016
+%8 December
+%C Cancun, Mexico
+%F Rakicevic2016
+                            </pre>
+                          </div>
+                      </div> -->
+                          
+                                
+                  </li>
+
+                </ul>
+
+              <br>
+              <br>
+              <br>
               <br>
               <h2>2017 
               <!-- <a href="#top"><strong>TOP</strong></a> -->
@@ -416,7 +479,7 @@ year = {2015},}
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Blog Section -->
     <section id="stuff">
         <div class="container">
             <div class="row">
@@ -490,16 +553,19 @@ year = {2015},}
     <section id="social">
       <footer class="text-center">
           <div class="footer-above">
-              <div class="container">
+              <div class="success">
                   <div class="row">
                       <!-- <div class="footer-col col-md-4">
                           <h3>Location</h3>
                           <p>3481 Melrose Place
                               <br>Beverly Hills, CA 90210</p>
                       </div> -->
-                      <div class="footer-col col-md-4">
-                          <h3>Social</h3>
+                      <h3>Social</h3>
+                      <div class="footer-col col-lg-6">
                           <ul class="list-inline">
+                              <li>
+                                  <a href="https://scholar.google.com/citations?user=5Jnn-YoAAAAJ" class="btn-social btn-outline"><i class="fa fa-fw ai-google-scholar"></i></a>
+                              </li>
                               <li>
                                   <a href="https://github.com/nemanja-rakicevic" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                               </li>
@@ -528,7 +594,7 @@ year = {2015},}
               <div class="container">
                   <div class="row">
                       <div class="col-lg-12">
-                          Copyright &copy; NR 2016 [Last updated 10/2018]
+                          Copyright &copy; NR 2016 [Last updated 04/2019]
                       </div>
                   </div>
               </div>
