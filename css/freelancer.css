@@ -4,8 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /*font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   overflow-x: hidden;
+  /*font-size: 1.25em;*/
+
 }
 p {
   font-size: 20px;
@@ -21,17 +23,28 @@ p, li {
 }
 p, ol {
   font-size: 20px;
-  text-align: left;
+  text-align: justify;
 }
 
 a,
-a:hover,
 a:focus,
 a:active,
 a.active {
+  /*font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   color: #FFBC24; /*FFBC24  #18BC9C */
   outline: none;
+  text-decoration: none;
 }
+
+
+a:hover{
+  /*font-weight:bold;*/
+  /*font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  color: #FFBC24; /*FFBC24  #18BC9C */
+  outline: none;
+  text-decoration: none;
+}
+
 h1{
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -54,9 +67,20 @@ hr.star-primary {
   border: none;
   border-top: solid 5px;
   text-align: left;
-  max-width: 300px;
-  margin: 25px auto 30px;
+  max-width: 400px;
+  margin: 5px auto 30px;
 }
+
+
+hr.star-bio {
+  padding: 0;
+  border: none;
+  border-top: solid 5px;
+  text-align: center;
+  /*max-width: 20px;*/
+  /*margin: 2px auto 30px;*/
+}
+
 hr.star-light:after,
 hr.star-primary:after {
   content: "\f111";
@@ -218,10 +242,18 @@ section h2 {
   margin: 0;
   font-size: 3em;
 }
+
 section.success {
   background: #18BC9C;
   color: white;
 }
+
+section.success2 {
+  background: #2C3E50;
+  color: white;
+}
+
+
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
@@ -251,7 +283,7 @@ section.success {
   -moz-transition: all ease 0.5s;
 }
 #portfolio .portfolio-item .portfolio-link .caption:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 #portfolio .portfolio-item .portfolio-link .caption .caption-content {
   position: absolute;

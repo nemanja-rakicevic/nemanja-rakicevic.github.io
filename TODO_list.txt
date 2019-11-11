@@ -1,0 +1,10 @@
+
+
+# TODO
+
+DONE- fix Bio
+DONE- fix colors (remove orange and green?)
+DONE- fix porftolio links
+DONE- portfolio hover - tldr text
+DONE- fix CV icon
+- add house icon instead of name at top?
