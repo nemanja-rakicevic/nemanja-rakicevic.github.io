@@ -10,7 +10,9 @@ body {
 
 }
 p {
-  font-size: 20px;
+  /*font-size: 20px;*/
+  font-size: 1.25em;
+  font-weight: 300;
   text-align: justify;
 }
 p.small {
@@ -23,6 +25,7 @@ p, li {
 }
 p, ol {
   font-size: 20px;
+  /*font-size: 1.25em;*/
   text-align: justify;
 }
 
@@ -95,7 +98,7 @@ hr.star-light {
   border-color: white;
 }
 hr.star-light:after {
-  background-color: #18BC9C;
+  background-color: #2C3E50; /*#18BC9C;*/
   color: white;
 }
 hr.star-primary {
@@ -135,6 +138,7 @@ header .intro-text .skills {
   font-weight: 300;
   text-align: left;
 }
+
 @media (min-width: 768px) {
   header .container {
     padding-top: 200px;
