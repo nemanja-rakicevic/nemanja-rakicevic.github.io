@@ -136,6 +136,13 @@ em {
   color: #3F3F3F;
 }
 
+
+pre, code {
+    white-space: normal;
+}
+
+
+
 a,
 a:hover,
 a:focus,
@@ -468,6 +475,7 @@ footer .footer-below {
   transition: all 0.3s ease-in-out;
   margin-top: 15px;
 }
+
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
@@ -679,4 +687,3 @@ fieldset[disabled] .btn-success.active {
     font-family: "Courier New";
     text-align: left;
 }
-
