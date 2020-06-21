@@ -41,4 +41,24 @@
         });
     });
 
+    // // Button switch from horizontal to vertical responsive
+    // $(function(){
+    // $('.your-class').slick({
+    // slidesToShow: 3,
+    // slidesToScroll: 1,
+    // dots: false,       
+    // responsive: [
+    //   {
+    //     breakpoint: 768,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       vertical: true,
+    //       verticalSwiping: true,
+    //         }
+    //       },
+    //     ]
+    //   });       
+    // });
+
 })(jQuery); // End of use strict
+
