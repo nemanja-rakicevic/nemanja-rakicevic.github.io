@@ -8,3 +8,10 @@ DONE- fix porftolio links
 DONE- portfolio hover - tldr text
 DONE- fix CV icon
 - add house icon instead of name at top?
+
+
+- check max width
+   - does it wor on mobile
+- mobile shows dots on hr - remove this
+
+- investigate whats going on with multiple fonts?
