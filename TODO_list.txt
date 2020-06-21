@@ -15,3 +15,6 @@ DONE- fix CV icon
 - mobile shows dots on hr - remove this
 
 - investigate whats going on with multiple fonts?
+
+- portfolio imgs, 
+- about me/ bio unite
